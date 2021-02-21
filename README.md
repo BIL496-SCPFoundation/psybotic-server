@@ -6,6 +6,6 @@ This server communicates with the MongoDB database
 
 ## Prerequisites
 <ol>
-<li>Make sure your MongoDB server runs on localhost:27017</li>
+<li>Make sure your MongoDB server is running on localhost:27017</li>
 </ol>	
 
