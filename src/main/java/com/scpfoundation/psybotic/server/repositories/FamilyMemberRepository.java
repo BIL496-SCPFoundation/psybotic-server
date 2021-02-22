@@ -1,2 +1,4 @@
-package com.scpfoundation.psybotic.server.repositories;public class FamilyMemberRepository {
+package com.scpfoundation.psybotic.server.repositories;
+
+public class FamilyMemberRepository {
 }
