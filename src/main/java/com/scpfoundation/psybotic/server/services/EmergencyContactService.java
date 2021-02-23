@@ -1,2 +1,4 @@
-package com.scpfoundation.psybotic.server.services;public class EmergencyContactService {
+package com.scpfoundation.psybotic.server.services;
+
+public class EmergencyContactService {
 }

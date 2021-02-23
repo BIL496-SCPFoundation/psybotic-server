@@ -1,2 +1,4 @@
-package com.scpfoundation.psybotic.server.services;public class ChatMessagesServices {
+package com.scpfoundation.psybotic.server.services;
+
+public class ChatMessageService {
 }

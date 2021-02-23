@@ -1,2 +1,4 @@
-package com.scpfoundation.psybotic.server.models;public class DisasterController {
+package com.scpfoundation.psybotic.server.models;
+
+public class Disaster {
 }

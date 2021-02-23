@@ -1,2 +1,4 @@
-package com.scpfoundation.psybotic.server.serviceInterfaces;public class IChatMessage {
+package com.scpfoundation.psybotic.server.serviceInterfaces;
+
+public class IChatMessageService {
 }

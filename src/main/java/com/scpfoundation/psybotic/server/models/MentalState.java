@@ -1,4 +1,4 @@
-package com.scpfoundation.psybotic.server.controllers;
+package com.scpfoundation.psybotic.server.models;
 
-public class MentalStateController {
+public class MentalState {
 }

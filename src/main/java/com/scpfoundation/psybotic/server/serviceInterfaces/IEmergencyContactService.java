@@ -1,2 +1,4 @@
-package com.scpfoundation.psybotic.server.serviceInterfaces;public class IEmergencyContactService {
+package com.scpfoundation.psybotic.server.serviceInterfaces;
+
+public class IEmergencyContactService {
 }

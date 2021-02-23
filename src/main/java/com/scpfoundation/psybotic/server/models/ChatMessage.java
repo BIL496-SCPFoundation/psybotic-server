@@ -1,4 +1,4 @@
-package com.scpfoundation.psybotic.server.controllers;
+package com.scpfoundation.psybotic.server.models;
 
-public class ChatMessageController {
+public class ChatMessage {
 }

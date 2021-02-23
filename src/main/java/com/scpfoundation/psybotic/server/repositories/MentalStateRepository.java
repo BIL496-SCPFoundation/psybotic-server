@@ -1,2 +1,4 @@
-package com.scpfoundation.psybotic.server.repositories;public class MentalStateRepository {
+package com.scpfoundation.psybotic.server.repositories;
+
+public class MentalStateRepository {
 }
