@@ -2,6 +2,7 @@ package com.scpfoundation.psybotic.server.models;
 
 import org.springframework.data.annotation.Id;
 
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
@@ -10,7 +11,7 @@ public class Disaster {
     private String id;
     private String type;
     private String location;
-    private Date date;
+    private Timestamp date;
 
     public String getType() {
         return type;
@@ -32,7 +33,7 @@ public class Disaster {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Timestamp date) {
         this.date = date;
     }
 

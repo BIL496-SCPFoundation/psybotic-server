@@ -6,7 +6,7 @@ import com.scpfoundation.psybotic.server.serviceInterfaces.IFamilyMemberService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/family_members")
+@RequestMapping("/familyMembers")
 public class FamilyMemberController {
 
     private final IFamilyMemberService familyMemberService;

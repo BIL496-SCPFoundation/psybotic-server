@@ -10,7 +10,7 @@ public class FamilyMemberUser {
     private String phone;
     private String type;
     private String mail;
-    private String firstname;
+    private String firstName;
     private String age;
     private String gender;
     private String city;
@@ -25,7 +25,7 @@ public class FamilyMemberUser {
     }
 
     public void setFirstname(String firstname) {
-        this.firstname = firstname;
+        this.firstName = firstName;
     }
 
     public void setAge(String age) {
@@ -57,7 +57,7 @@ public class FamilyMemberUser {
     }
 
     public String getFirstname() {
-        return firstname;
+        return firstName;
     }
 
     public String getAge() {

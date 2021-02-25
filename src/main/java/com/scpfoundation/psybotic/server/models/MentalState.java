@@ -10,16 +10,16 @@ public class MentalState {
 
     @Id
     private String id;
-    private String emotional_state;
+    private String emotionalState;
     private Time time;
     private Date createdDate;
 
     public String getEmotional_state() {
-        return emotional_state;
+        return emotionalState;
     }
 
     public void setEmotional_state(String emotional_state) {
-        this.emotional_state = emotional_state;
+        this.emotionalState = emotional_state;
     }
 
     public Time getTime() {
@@ -43,12 +43,12 @@ public class MentalState {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MentalState that = (MentalState) o;
-        return Objects.equals(id, that.id) && Objects.equals(emotional_state, that.emotional_state) && Objects.equals(time, that.time) && Objects.equals(createdDate, that.createdDate);
+        return Objects.equals(id, that.id) && Objects.equals(emotionalState, that.emotionalState) && Objects.equals(time, that.time) && Objects.equals(createdDate, that.createdDate);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, emotional_state, time, createdDate);
+        return Objects.hash(id, emotionalState, time, createdDate);
     }
 
 }

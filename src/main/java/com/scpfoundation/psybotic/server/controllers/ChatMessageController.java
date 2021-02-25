@@ -8,7 +8,7 @@ import com.scpfoundation.psybotic.server.serviceInterfaces.IUserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/chat_messages")
+@RequestMapping("/chatMessages")
 public class ChatMessageController {
 
     private final IChatMessageService chatMessageService;

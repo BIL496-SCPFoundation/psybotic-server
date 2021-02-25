@@ -7,7 +7,7 @@ import com.scpfoundation.psybotic.server.serviceInterfaces.IEmergencyContactServ
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/emergency_contacts")
+@RequestMapping("/emergencyContacts")
 public class EmergencyContactController {
     private final IEmergencyContactService emergencyContactService;
 

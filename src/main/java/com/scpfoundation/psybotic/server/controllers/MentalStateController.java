@@ -8,7 +8,7 @@ import com.scpfoundation.psybotic.server.serviceInterfaces.IUserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/mental_states")
+@RequestMapping("/mentalStates")
 public class MentalStateController {
 
     private final IMentalStateService mentalStateService;

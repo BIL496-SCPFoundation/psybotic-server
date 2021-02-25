@@ -2,19 +2,21 @@ package com.scpfoundation.psybotic.server.models;
 
 import org.springframework.data.annotation.Id;
 
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
 public class Psyhchologist {
     @Id
     private String id;
-    private Date createdDate;
+    private Timestamp createdDate;
 
-    public Date getCreatedDate() {
+    public Timestamp getCreatedDate() {
         return createdDate;
     }
 
-    public void setCreatedDate(Date createdDate) {
+    public void setCreatedDate(Timestamp createdDate) {
         this.createdDate = createdDate;
     }
 
