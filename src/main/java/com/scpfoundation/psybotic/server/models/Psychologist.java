@@ -2,12 +2,10 @@ package com.scpfoundation.psybotic.server.models;
 
 import org.springframework.data.annotation.Id;
 
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Date;
 import java.util.Objects;
 
-public class Psyhchologist {
+public class Psychologist {
     @Id
     private String id;
     private Timestamp createdDate;
@@ -23,10 +21,10 @@ public class Psyhchologist {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof Psyhchologist)) return false;
-        Psyhchologist psyhchologist = (Psyhchologist) o;
-        return id.equals(psyhchologist.id) &&
-                Objects.equals(getCreatedDate(), psyhchologist.getCreatedDate());
+        if (!(o instanceof Psychologist)) return false;
+        Psychologist psychologist = (Psychologist) o;
+        return id.equals(psychologist.id) &&
+                Objects.equals(getCreatedDate(), psychologist.getCreatedDate());
     }
 
     @Override
