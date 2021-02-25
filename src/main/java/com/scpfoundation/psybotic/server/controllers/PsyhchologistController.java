@@ -11,7 +11,7 @@ public class PsyhchologistController {
 
     private final IPsyhchologistService psyhchologistService;
 
-    public PsyhchologistController(IPsyhchologistService psyhchologistService) {this.psyhchologistService=psyhchologistService}
+    public PsyhchologistController(IPsyhchologistService psyhchologistService) {this.psyhchologistService=psyhchologistService;}
 
 
     @PostMapping("/insert")
