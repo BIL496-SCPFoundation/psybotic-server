@@ -1,27 +1,29 @@
 package com.scpfoundation.psybotic.server.services;
 
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
+import com.scpfoundation.psybotic.server.models.MentalState;
 import com.scpfoundation.psybotic.server.models.User;
-import com.scpfoundation.psybotic.server.repositories.UserRepository;
-import com.scpfoundation.psybotic.server.serviceInterfaces.IUserService;
+import com.scpfoundation.psybotic.server.repositories.MentalStateRepository;
+import com.scpfoundation.psybotic.server.serviceInterfaces.IMentalStateService;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class UserService implements IUserService {
+public class MentalStateService implements IMentalStateService {
 
-    private final UserRepository userRepository;
+    private final MentalStateRepository mentalStateRepository;
 
-    public UserService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public MentalStateService(MentalStateRepository mentalStateRepository) {
+        this.mentalStateRepository = mentalStateRepository;
     }
 
+
     @Override
-    public GeneralResponse insert(User user) {
+    public GeneralResponse insert(MentalState mentalState) {
         GeneralResponse res = new GeneralResponse();
         try {
-            userRepository.save(user);
+            mentalStateRepository.save(mentalState);
             res.setMessage("User saved successfully");
             res.setStatus(200);
         } catch (Exception e) {
@@ -33,8 +35,9 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public User findById(String id) {
-        Optional<User> optionalUser = userRepository.findById(id);
+    public MentalState findById(String id) {
+
+        Optional<MentalState> optionalUser = mentalStateRepository.findById(id);
         return optionalUser.orElse(null);
     }
 }
