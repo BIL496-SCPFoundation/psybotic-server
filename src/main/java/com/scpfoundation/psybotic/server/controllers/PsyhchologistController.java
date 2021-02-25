@@ -2,9 +2,7 @@ package com.scpfoundation.psybotic.server.controllers;
 
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.Psyhchologist;
-import com.scpfoundation.psybotic.server.models.User;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IPsyhchologistService;
-import com.scpfoundation.psybotic.server.serviceInterfaces.IUserService;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

@@ -1,11 +1,9 @@
 package com.scpfoundation.psybotic.server.services;
 
-import ch.qos.logback.core.encoder.EchoEncoder;
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.User;
 import com.scpfoundation.psybotic.server.repositories.UserRepository;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
