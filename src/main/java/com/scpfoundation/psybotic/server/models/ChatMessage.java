@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
-public class ChatMessage {
+public class ChatMessage implements BasicModel<String>{
     @Id
     private String id;
     private String message;

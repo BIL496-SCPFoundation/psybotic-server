@@ -6,7 +6,7 @@ import java.sql.Time;
 import java.util.Date;
 import java.util.Objects;
 
-public class MentalState {
+public class MentalState implements BasicModel<String>{
 
     @Id
     private String id;

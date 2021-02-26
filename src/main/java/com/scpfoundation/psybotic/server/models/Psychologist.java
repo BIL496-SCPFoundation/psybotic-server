@@ -5,7 +5,7 @@ import org.springframework.data.annotation.Id;
 import java.sql.Timestamp;
 import java.util.Objects;
 
-public class Psychologist {
+public class Psychologist implements BasicModel<String>{
     @Id
     private String id;
     private Timestamp createdDate;

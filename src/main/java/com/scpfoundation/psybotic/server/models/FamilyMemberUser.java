@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 
 import java.util.Objects;
 
-public class FamilyMemberUser {
+public class FamilyMemberUser implements BasicModel<String>{
     @Id
     private String id;
     private String phone;

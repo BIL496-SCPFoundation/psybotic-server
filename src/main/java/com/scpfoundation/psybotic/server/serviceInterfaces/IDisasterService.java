@@ -4,10 +4,6 @@ import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.Disaster;
 import com.scpfoundation.psybotic.server.models.User;
 
-public interface IDisasterService {
-
-    GeneralResponse insert(Disaster disaster);
-
-    Disaster findById(String id);
+public interface IDisasterService extends ICRUDService<Disaster, String>{
 
 }

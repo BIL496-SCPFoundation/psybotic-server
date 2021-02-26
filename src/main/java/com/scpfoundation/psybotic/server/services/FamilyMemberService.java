@@ -10,36 +10,15 @@ import org.springframework.stereotype.Service;
 import java.util.Optional;
 
 @Service
-public class FamilyMemberService implements IFamilyMemberService {
+public class FamilyMemberService
+        extends CRUDService<FamilyMemberRepository, FamilyMemberUser>
+        implements IFamilyMemberService {
 
     private final FamilyMemberRepository familyMemberRepository;
 
     public FamilyMemberService(FamilyMemberRepository familyMemberRepository) {
+        super(familyMemberRepository);
         this.familyMemberRepository = familyMemberRepository;
-
-    }
-
-    @Override
-    public GeneralResponse insert(FamilyMemberUser familyMemberUser) {
-        GeneralResponse res = new GeneralResponse();
-        try {
-            familyMemberRepository.save(familyMemberUser);
-            res.setMessage("Family Member User saved successfully");
-            res.setStatus(200);
-        } catch (Exception e) {
-            res.setError(e.getMessage());
-            res.setMessage("Encountered an error while saving familyMemberUser");
-            res.setStatus(500); // 500: internal server error
-        }
-        return res;
-
-
-    }
-
-    @Override
-    public FamilyMemberUser findById(String id) {
-        Optional<FamilyMemberUser> optionalUser = familyMemberRepository.findById(id);
-        return optionalUser.orElse(null);
 
     }
 }

@@ -6,7 +6,7 @@ import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
-public class Disaster {
+public class Disaster implements BasicModel<String>{
     @Id
     private String id;
     private String type;

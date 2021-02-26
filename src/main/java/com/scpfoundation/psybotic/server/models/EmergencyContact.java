@@ -4,7 +4,7 @@ import org.springframework.data.annotation.Id;
 
 import java.util.Objects;
 
-public class EmergencyContact {
+public class EmergencyContact implements BasicModel<String>{
     @Id
     private String id;
     private String phone;
