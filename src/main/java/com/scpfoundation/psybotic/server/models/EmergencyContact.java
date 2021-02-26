@@ -12,6 +12,14 @@ public class EmergencyContact {
     private String mail;
     private String name;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getPhone() {
         return phone;
     }

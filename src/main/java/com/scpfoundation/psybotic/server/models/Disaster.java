@@ -13,6 +13,14 @@ public class Disaster {
     private String location;
     private Timestamp date;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public String getType() {
         return type;
     }

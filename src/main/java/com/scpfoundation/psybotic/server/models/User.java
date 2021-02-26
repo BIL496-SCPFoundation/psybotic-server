@@ -11,11 +11,19 @@ public class User {
     private String id;
     private String firstName;
     private String lastName;
-    private String eMail;
+    private String email;
     private String googleId;
     private Character gender;
     private String city;
     private String maritalStatus;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -33,12 +41,12 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String geteMail() {
-        return eMail;
+    public String getEmail() {
+        return email;
     }
 
-    public void seteMail(String eMail) {
-        this.eMail = eMail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getGoogleId() {
@@ -81,7 +89,7 @@ public class User {
         return id.equals(user.id) &&
                 Objects.equals(getFirstName(), user.getFirstName()) &&
                 Objects.equals(getLastName(), user.getLastName()) &&
-                Objects.equals(geteMail(), user.geteMail()) &&
+                Objects.equals(getEmail(), user.getEmail()) &&
                 Objects.equals(getGoogleId(), user.getGoogleId()) &&
                 Objects.equals(getGender(), user.getGender()) &&
                 Objects.equals(getCity(), user.getCity()) &&
@@ -90,6 +98,7 @@ public class User {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getFirstName(), getLastName(), geteMail(), getGoogleId(), getGender(), getCity(), getMaritalStatus());
+        return Objects.hash(id, getFirstName(), getLastName(), getEmail(), getGoogleId(), getGender(), getCity(),
+                getMaritalStatus());
     }
 }

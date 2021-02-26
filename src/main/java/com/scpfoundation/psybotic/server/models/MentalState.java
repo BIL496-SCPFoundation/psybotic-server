@@ -14,12 +14,20 @@ public class MentalState {
     private Time time;
     private Date createdDate;
 
-    public String getEmotional_state() {
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getEmotionalState() {
         return emotionalState;
     }
 
-    public void setEmotional_state(String emotional_state) {
-        this.emotionalState = emotional_state;
+    public void setEmotionalState(String emotionalState) {
+        this.emotionalState = emotionalState;
     }
 
     public Time getTime() {

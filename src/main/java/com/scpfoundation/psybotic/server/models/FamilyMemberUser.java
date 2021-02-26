@@ -16,6 +16,14 @@ public class FamilyMemberUser {
     private String city;
     private String maritalStatus;
 
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
     public void setType(String type) {
         this.type = type;
     }
@@ -24,7 +32,7 @@ public class FamilyMemberUser {
         this.mail = mail;
     }
 
-    public void setFirstname(String firstname) {
+    public void setFirstName(String firstname) {
         this.firstName = firstName;
     }
 
@@ -44,6 +52,10 @@ public class FamilyMemberUser {
         this.maritalStatus = maritalStatus;
     }
 
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -56,7 +68,7 @@ public class FamilyMemberUser {
         return mail;
     }
 
-    public String getFirstname() {
+    public String getFirstName() {
         return firstName;
     }
 
@@ -85,7 +97,7 @@ public class FamilyMemberUser {
                 Objects.equals(getPhone(), that.getPhone()) &&
                 Objects.equals(getType(), that.getType()) &&
                 Objects.equals(getMail(), that.getMail()) &&
-                Objects.equals(getFirstname(), that.getFirstname()) &&
+                Objects.equals(getFirstName(), that.getFirstName()) &&
                 Objects.equals(getAge(), that.getAge()) &&
                 Objects.equals(getGender(), that.getGender()) &&
                 Objects.equals(getCity(), that.getCity()) &&
@@ -94,7 +106,8 @@ public class FamilyMemberUser {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getPhone(), getType(), getMail(), getFirstname(), getAge(), getGender(), getCity(), getMaritalStatus());
+        return Objects.hash(id, getPhone(), getType(), getMail(), getFirstName(), getAge(), getGender(), getCity(),
+                getMaritalStatus());
     }
 
 
