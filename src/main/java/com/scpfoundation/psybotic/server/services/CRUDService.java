@@ -120,14 +120,18 @@ public class CRUDService<T extends MongoRepository<E, String>,
     public ResponseEntity<GeneralResponse> update(E updatedEntity) {
         GeneralResponse res = new GeneralResponse();
         try {
-            if (updatedEntity.getId() != null) {
+            if (updatedEntity.getId() != null && repository.findById((String) updatedEntity.getId()).isPresent()) {
                 repository.save(updatedEntity);
                 res.setStatus(HttpStatus.OK.value());
                 res.setMessage("Entity updated successfully");
             } else {
                 res.setMessage("Entity cannot be updated");
                 res.setStatus(HttpStatus.BAD_REQUEST.value()); // Bad request, this operation requires an id field
-                res.setWarning("Be sure you provided an id field");
+                if (updatedEntity.getId() == null) {
+                    res.setWarning("Be sure you provided an id field");
+                } else {
+                    res.setWarning("Entity cannot be found by the provided id");
+                }
             }
         } catch (Exception e) {
             res.setMessage("Encountered an error while updating entity");
