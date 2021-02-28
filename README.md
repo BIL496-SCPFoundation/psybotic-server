@@ -4,7 +4,7 @@
 
 This server communicates with the MongoDB database
 
-MongoDB server url: [mongodb+srv://psybotic:psybotic@psyboticmaindatabase.ykgdk.mongodb.net/PsyboticMain](mongodb+srv://psybotic:psybotic@psyboticmaindatabase.ykgdk.mongodb.net/PsyboticMain)
+MongoDB server url: mongodb+srv://psybotic:psybotic@psyboticmaindatabase.ykgdk.mongodb.net/PsyboticMain
 
 For OpenAPI docs: [https://limitless-lake-96203.herokuapp.com/v3/api-docs](https://limitless-lake-96203.herokuapp.com/v3/api-docs)
 
