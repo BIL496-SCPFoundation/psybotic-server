@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/chatMessages")
+@CrossOrigin("*")
 public class ChatMessageController {
 
     private final IChatMessageService chatMessageService;

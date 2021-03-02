@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/disasters")
+@CrossOrigin("*")
 public class DisasterController {
 
     private final IDisasterService disasterService;

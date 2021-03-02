@@ -8,7 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/psyhchologists")
+@RequestMapping("/psychologists")
+@CrossOrigin("*")
 public class PsychologistController {
 
     private final IPsychologistService psychologistService;

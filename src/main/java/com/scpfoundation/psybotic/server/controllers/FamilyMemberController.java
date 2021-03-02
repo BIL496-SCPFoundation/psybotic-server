@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/familyMembers")
+@CrossOrigin("*")
 public class FamilyMemberController {
 
     private final IFamilyMemberService familyMemberService;

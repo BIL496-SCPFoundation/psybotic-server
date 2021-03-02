@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/mentalStates")
+@CrossOrigin("*")
 public class MentalStateController {
 
     private final IMentalStateService mentalStateService;
