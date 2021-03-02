@@ -12,24 +12,26 @@ public class Disaster implements BasicModel<String>{
     private String type;
     private String location;
     private Timestamp date;
-    private int latitude;
+    private double latitude;
+    private double longitude;
 
-    public int getLongitude() {
-        return longitude;
-    }
 
     public void setLongitude(int longitude) {
         this.longitude = longitude;
     }
 
-    private int longitude;
 
-    public int getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
     public void setLatitude(int latitude) {
         this.latitude = latitude;
+    }
+
+
+    public double getLongitude() {
+        return longitude;
     }
 
 
