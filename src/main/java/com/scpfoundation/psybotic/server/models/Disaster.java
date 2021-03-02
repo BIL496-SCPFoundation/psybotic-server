@@ -12,6 +12,26 @@ public class Disaster implements BasicModel<String>{
     private String type;
     private String location;
     private Timestamp date;
+    private int latitude;
+
+    public int getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(int longitude) {
+        this.longitude = longitude;
+    }
+
+    private int longitude;
+
+    public int getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(int latitude) {
+        this.latitude = latitude;
+    }
+
 
     public String getId() {
         return id;
@@ -53,6 +73,8 @@ public class Disaster implements BasicModel<String>{
         return Objects.equals(id, disaster.id) &&
                 Objects.equals(getType(), disaster.getType()) &&
                 Objects.equals(getLocation(), disaster.getLocation()) &&
+                Objects.equals(getLatitude(),disaster.getLatitude()) &&
+                Objects.equals(getLongitude(),disaster.getLongitude()) &&
                 Objects.equals(getDate(), disaster.getDate());
     }
 
