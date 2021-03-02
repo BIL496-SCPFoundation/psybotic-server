@@ -9,8 +9,9 @@ public class EmergencyContact implements BasicModel<String>{
     private String id;
     private String phone;
     private String type;
-    private String mail;
+    private String email;
     private String name;
+    private String superId;
 
     public String getId() {
         return id;
@@ -36,12 +37,12 @@ public class EmergencyContact implements BasicModel<String>{
         this.type = type;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getName() {
@@ -52,6 +53,14 @@ public class EmergencyContact implements BasicModel<String>{
         this.name = name;
     }
 
+    public String getSuperId() {
+        return superId;
+    }
+
+    public void setSuperId(String superId) {
+        this.superId = superId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -60,13 +69,13 @@ public class EmergencyContact implements BasicModel<String>{
         return Objects.equals(id, that.id) &&
                 Objects.equals(getPhone(), that.getPhone()) &&
                 Objects.equals(getType(), that.getType()) &&
-                Objects.equals(getMail(), that.getMail()) &&
+                Objects.equals(getEmail(), that.getEmail()) &&
                 Objects.equals(getName(), that.getName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getPhone(), getType(), getMail(), getName());
+        return Objects.hash(id, getPhone(), getType(), getEmail(), getName());
     }
 
 }

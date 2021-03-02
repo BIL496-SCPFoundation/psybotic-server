@@ -17,6 +17,7 @@ public class FamilyMemberUser implements BasicModel<String>{
     private String gender;
     private String city;
     private String maritalStatus;
+    private String superId;
 
     @Override
     public String getId() {
@@ -106,6 +107,14 @@ public class FamilyMemberUser implements BasicModel<String>{
 
     public void setMaritalStatus(String maritalStatus) {
         this.maritalStatus = maritalStatus;
+    }
+
+    public String getSuperId() {
+        return superId;
+    }
+
+    public void setSuperId(String superId) {
+        this.superId = superId;
     }
 
     @Override

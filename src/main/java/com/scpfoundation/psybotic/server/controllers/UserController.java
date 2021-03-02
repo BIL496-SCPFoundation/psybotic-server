@@ -1,12 +1,17 @@
 package com.scpfoundation.psybotic.server.controllers;
 
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
+import com.scpfoundation.psybotic.server.models.EmergencyContact;
+import com.scpfoundation.psybotic.server.models.FamilyMemberUser;
+import com.scpfoundation.psybotic.server.models.MentalState;
 import com.scpfoundation.psybotic.server.models.User;
 import com.scpfoundation.psybotic.server.serviceInterfaces.ICRUDService;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/users")
@@ -48,4 +53,20 @@ public class UserController {
     public User login(@RequestBody User user) {
         return userService.login(user);
     }
+
+    @GetMapping("/emergencyContacts")
+    public List<EmergencyContact> findEmergencyContacts(@RequestParam("userId") String userId) {
+        return userService.findEmergencyContacts(userId);
+    }
+
+    @GetMapping("/familyMembers")
+    public List<FamilyMemberUser> findFamilyMembers(@RequestParam("userId") String userId) {
+        return userService.findFamilyMembers(userId);
+    }
+
+    @GetMapping("/mentalStates")
+    public List<MentalState> findMentalStates(@RequestParam("userId") String userId) {
+        return userService.findMentalStates(userId);
+    }
+
 }
