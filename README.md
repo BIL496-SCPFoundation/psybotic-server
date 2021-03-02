@@ -4,11 +4,8 @@
 
 This server communicates with the MongoDB database
 
-## Prerequisites
-<ol>
-<li>Make sure your MongoDB server is running on localhost:27017</li>
-</ol>	
+MongoDB server url: mongodb+srv://psybotic:psybotic@psyboticmaindatabase.ykgdk.mongodb.net/PsyboticMain
 
-For OpenAPI docs: [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
+For OpenAPI docs: [https://limitless-lake-96203.herokuapp.com/v3/api-docs](https://limitless-lake-96203.herokuapp.com/v3/api-docs)
 
-For SwaggerUI: [http://localhost:8080/swagger-ui](http://localhost:8080/swagger-ui)
+For SwaggerUI: [https://limitless-lake-96203.herokuapp.com/swagger-ui](https://limitless-lake-96203.herokuapp.com/swagger-ui)
