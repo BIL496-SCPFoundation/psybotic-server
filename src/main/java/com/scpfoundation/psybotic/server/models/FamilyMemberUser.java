@@ -10,7 +10,7 @@ public class FamilyMemberUser implements BasicModel<String>{
     private String googleId;
     private String phone;
     private String type;
-    private String mail;
+    private String email;
     private String firstName;
     private String lastName;
     private String age;
@@ -52,12 +52,12 @@ public class FamilyMemberUser implements BasicModel<String>{
         this.type = type;
     }
 
-    public String getMail() {
-        return mail;
+    public String getEmail() {
+        return email;
     }
 
-    public void setMail(String mail) {
-        this.mail = mail;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getFirstName() {
@@ -113,11 +113,11 @@ public class FamilyMemberUser implements BasicModel<String>{
         if (this == o) return true;
         if (!(o instanceof FamilyMemberUser)) return false;
         FamilyMemberUser that = (FamilyMemberUser) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getGoogleId(), that.getGoogleId()) && Objects.equals(getPhone(), that.getPhone()) && Objects.equals(getType(), that.getType()) && Objects.equals(getMail(), that.getMail()) && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getAge(), that.getAge()) && Objects.equals(getGender(), that.getGender()) && Objects.equals(getCity(), that.getCity()) && Objects.equals(getMaritalStatus(), that.getMaritalStatus());
+        return Objects.equals(getId(), that.getId()) && Objects.equals(getGoogleId(), that.getGoogleId()) && Objects.equals(getPhone(), that.getPhone()) && Objects.equals(getType(), that.getType()) && Objects.equals(getEmail(), that.getEmail()) && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getAge(), that.getAge()) && Objects.equals(getGender(), that.getGender()) && Objects.equals(getCity(), that.getCity()) && Objects.equals(getMaritalStatus(), that.getMaritalStatus());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getGoogleId(), getPhone(), getType(), getMail(), getFirstName(), getLastName(), getAge(), getGender(), getCity(), getMaritalStatus());
+        return Objects.hash(getId(), getGoogleId(), getPhone(), getType(), getEmail(), getFirstName(), getLastName(), getAge(), getGender(), getCity(), getMaritalStatus());
     }
 }

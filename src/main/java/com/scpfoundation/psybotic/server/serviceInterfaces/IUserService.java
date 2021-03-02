@@ -5,4 +5,5 @@ import com.scpfoundation.psybotic.server.models.User;
 import org.springframework.http.ResponseEntity;
 
 public interface IUserService extends ICRUDService<User, String> {
+    User login(User user);
 }

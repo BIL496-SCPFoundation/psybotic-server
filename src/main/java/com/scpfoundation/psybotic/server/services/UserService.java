@@ -18,4 +18,19 @@ public class UserService extends CRUDService<UserRepository, User> implements IU
         super(userRepository);
         this.userRepository = userRepository;
     }
+
+    @Override
+    public User login(User user) {
+        User tmpUser = userRepository.findUserByGoogleId(user.getGoogleId());
+        if (tmpUser != null) {
+            return tmpUser;
+        } else {
+            /*
+            googleId and id are the same
+             */
+            user.setId(user.getGoogleId());
+            userRepository.save(user);
+            return user;
+        }
+    }
 }

@@ -43,4 +43,9 @@ public class UserController {
     public ResponseEntity<GeneralResponse> delete(@RequestBody User user) {
         return userService.delete(user);
     }
+
+    @PostMapping("/login")
+    public User login(@RequestBody User user) {
+        return userService.login(user);
+    }
 }
