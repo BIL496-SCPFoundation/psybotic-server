@@ -16,6 +16,25 @@ public class User implements BasicModel<String>{
     private Character gender;
     private String city;
     private String maritalStatus;
+    private double latitude;
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    private double longitude;
 
     public String getId() {
         return id;
@@ -93,6 +112,8 @@ public class User implements BasicModel<String>{
                 Objects.equals(getGoogleId(), user.getGoogleId()) &&
                 Objects.equals(getGender(), user.getGender()) &&
                 Objects.equals(getCity(), user.getCity()) &&
+                Objects.equals(getLatitude(), user.getLatitude()) &&
+                Objects.equals(getLongitude(), user.getLongitude()) &&
                 Objects.equals(getMaritalStatus(), user.getMaritalStatus());
     }
 
