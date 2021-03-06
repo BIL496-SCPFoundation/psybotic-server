@@ -3,12 +3,13 @@ package com.scpfoundation.psybotic.server.models;
 import org.springframework.data.annotation.Id;
 
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.Objects;
 
 public class Psychologist implements BasicModel<String>{
     @Id
     private String id;
-    private Timestamp createdDate;
+    private Date createdDate;
     private String firstName;
     private String lastName;
     private String title;
@@ -45,7 +46,7 @@ public class Psychologist implements BasicModel<String>{
         this.id = id;
     }
 
-    public Timestamp getCreatedDate() {
+    public Date getCreatedDate() {
         return createdDate;
     }
 
