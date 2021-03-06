@@ -13,6 +13,7 @@ public class MentalState implements BasicModel<String>{
     private String emotionalState;
     private Time time;
     private Date createdDate;
+    private String superId;
 
     public String getId() {
         return id;
@@ -44,6 +45,14 @@ public class MentalState implements BasicModel<String>{
 
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
+    }
+
+    public String getSuperId() {
+        return superId;
+    }
+
+    public void setSuperId(String superId) {
+        this.superId = superId;
     }
 
     @Override

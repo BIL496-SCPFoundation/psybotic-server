@@ -1,12 +1,12 @@
 package com.scpfoundation.psybotic.server.controllers;
 
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
-import com.scpfoundation.psybotic.server.models.Disaster;
 import com.scpfoundation.psybotic.server.models.EmergencyContact;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IEmergencyContactService;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
 
 @RestController
 @RequestMapping("/emergencyContacts")

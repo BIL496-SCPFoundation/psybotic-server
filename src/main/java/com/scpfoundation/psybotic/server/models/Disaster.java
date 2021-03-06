@@ -11,7 +11,7 @@ public class Disaster implements BasicModel<String>{
     private String id;
     private String type;
     private String location;
-    private Timestamp date;
+    private Date date;
     private double latitude;
     private double longitude;
 

@@ -35,6 +35,15 @@ public class User implements BasicModel<String>{
     }
 
     private double longitude;
+    private String deviceToken;
+
+    public String getDeviceToken() {
+        return deviceToken;
+    }
+
+    public void setDeviceToken(String deviceToken) {
+        this.deviceToken = deviceToken;
+    }
 
     public String getId() {
         return id;
