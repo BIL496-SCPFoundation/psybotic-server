@@ -11,6 +11,7 @@ import com.scpfoundation.psybotic.server.repositories.UserRepository;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -31,18 +32,14 @@ public class UserService extends CRUDService<UserRepository, User> implements IU
     }
 
     @Override
+    @Transactional
     public User login(User user) {
-        User tmpUser = userRepository.findUserByGoogleId(user.getGoogleId());
-        if (tmpUser != null) {
-            return tmpUser;
-        } else {
-            /*
-            googleId and id are the same
-             */
-            user.setId(user.getGoogleId());
-            userRepository.save(user);
-            return user;
-        }
+        /*
+        googleId and id are the same
+         */
+        user.setId(user.getGoogleId());
+        userRepository.save(user);
+        return user;
     }
 
     @Override

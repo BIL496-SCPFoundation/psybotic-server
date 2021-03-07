@@ -10,7 +10,8 @@ public class EmergencyContact implements BasicModel<String>{
     private String phone;
     private String type;
     private String email;
-    private String name;
+    private String firstName;
+    private String lastName;
     private String superId;
 
     public String getId() {
@@ -45,12 +46,20 @@ public class EmergencyContact implements BasicModel<String>{
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public String getSuperId() {
@@ -70,12 +79,12 @@ public class EmergencyContact implements BasicModel<String>{
                 Objects.equals(getPhone(), that.getPhone()) &&
                 Objects.equals(getType(), that.getType()) &&
                 Objects.equals(getEmail(), that.getEmail()) &&
-                Objects.equals(getName(), that.getName());
+                Objects.equals(getFirstName(), that.getFirstName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getPhone(), getType(), getEmail(), getName());
+        return Objects.hash(id, getPhone(), getType(), getEmail(), getFirstName());
     }
 
 }
