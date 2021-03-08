@@ -17,4 +17,6 @@ public interface IUserService extends ICRUDService<User, String> {
     List<FamilyMemberUser> findFamilyMembers(String userId);
 
     List<MentalState> findMentalStates(String userId);
+
+    ResponseEntity<GeneralResponse> updateDeviceToken(User user);
 }

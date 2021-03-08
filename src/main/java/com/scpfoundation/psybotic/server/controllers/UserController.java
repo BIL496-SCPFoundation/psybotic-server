@@ -69,4 +69,8 @@ public class UserController {
         return userService.findMentalStates(userId);
     }
 
+    @PostMapping("/updateDeviceToken")
+    public ResponseEntity<GeneralResponse> updateDeviceToken(@RequestBody User user) {
+        return userService.updateDeviceToken(user);
+    }
 }
