@@ -11,19 +11,20 @@ import org.springframework.core.io.Resource;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 
 @Configuration
 public class FirestoreConfig {
 
 
-    @Value("classpath:${app.firebase-configuration-file}")
-    Resource resourceFile;
+    @Value("${app.firebase-configuration-file}")
+    String configPath;
 
 
     @Bean
     public Firestore getFirestore(@Value("${app.firebase-configuration-file}") String credentialPath) throws IOException {
-        FileInputStream serviceAccount = new FileInputStream(resourceFile.getFile());
-        GoogleCredentials credentials = GoogleCredentials.fromStream(serviceAccount);
+        InputStream in = ClassLoader.getSystemResourceAsStream(configPath);
+        GoogleCredentials credentials = GoogleCredentials.fromStream(in);
 
         FirestoreOptions options = FirestoreOptions.newBuilder()
                 .setCredentials(credentials).build();
