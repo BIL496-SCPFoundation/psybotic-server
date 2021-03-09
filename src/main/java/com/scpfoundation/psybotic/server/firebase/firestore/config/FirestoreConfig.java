@@ -1,11 +1,14 @@
 package com.scpfoundation.psybotic.server.firebase.firestore.config;
 
+import com.google.auth.oauth2.AccessToken;
 import com.google.auth.oauth2.GoogleCredentials;
 import com.google.cloud.firestore.Firestore;
 import com.google.cloud.firestore.FirestoreOptions;
+import com.google.firebase.iid.FirebaseInstanceId;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 
 import java.io.File;
@@ -18,13 +21,12 @@ public class FirestoreConfig {
 
 
     @Value("${app.firebase-configuration-file}")
-    String configPath;
+    String firebaseConfigPath;
 
 
     @Bean
     public Firestore getFirestore(@Value("${app.firebase-configuration-file}") String credentialPath) throws IOException {
-        InputStream in = ClassLoader.getSystemResourceAsStream(configPath);
-        GoogleCredentials credentials = GoogleCredentials.fromStream(in);
+        GoogleCredentials credentials = GoogleCredentials.fromStream(new ClassPathResource(firebaseConfigPath).getInputStream());
 
         FirestoreOptions options = FirestoreOptions.newBuilder()
                 .setCredentials(credentials).build();
