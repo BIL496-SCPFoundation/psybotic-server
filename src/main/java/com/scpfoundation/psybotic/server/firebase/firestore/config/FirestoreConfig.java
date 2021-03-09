@@ -6,25 +6,21 @@ import com.google.cloud.firestore.FirestoreOptions;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.core.io.Resource;
-
-import java.io.File;
-import java.io.FileInputStream;
+import org.springframework.core.io.ClassPathResource;
 import java.io.IOException;
-import java.io.InputStream;
 
 @Configuration
 public class FirestoreConfig {
 
 
     @Value("${app.firebase-configuration-file}")
-    String configPath;
+    String firebaseConfigPath;
 
 
     @Bean
-    public Firestore getFirestore(@Value("${app.firebase-configuration-file}") String credentialPath) throws IOException {
-        InputStream in = ClassLoader.getSystemResourceAsStream(configPath);
-        GoogleCredentials credentials = GoogleCredentials.fromStream(in);
+    public Firestore getFirestore() throws IOException {
+        GoogleCredentials credentials = GoogleCredentials
+                .fromStream(new ClassPathResource(firebaseConfigPath).getInputStream());
 
         FirestoreOptions options = FirestoreOptions.newBuilder()
                 .setCredentials(credentials).build();
