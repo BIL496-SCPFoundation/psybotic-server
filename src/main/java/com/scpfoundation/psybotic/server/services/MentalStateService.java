@@ -1,8 +1,6 @@
 package com.scpfoundation.psybotic.server.services;
 
-import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.MentalState;
-import com.scpfoundation.psybotic.server.models.User;
 import com.scpfoundation.psybotic.server.repositories.MentalStateRepository;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IMentalStateService;
 import org.springframework.stereotype.Service;
