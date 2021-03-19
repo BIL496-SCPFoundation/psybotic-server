@@ -18,4 +18,6 @@ public interface IUserService extends ICRUDService<User, String> {
     List<Notification> findNotifications(String userId);
 
     List<User> findByNearLocations(String city, double latitude, double longitude);
+
+    ResponseEntity<GeneralResponse> updateDeviceToken(User user);
 }

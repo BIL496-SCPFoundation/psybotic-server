@@ -9,9 +9,8 @@ import org.springframework.data.mongodb.repository.Query;
 import java.util.List;
 
 public interface NotificationRepository extends MongoRepository<Notification,String> {
-    List<Notification> findBySuperId(String UserId);
+    List<Notification> findByUserId(String UserId);
 
     @Query("{'city :?0, " + "longitude :?0," + "latitude :?0 } ")
     List<User> findByNearLocations(String city, double latitude, double longitude);
-
 }

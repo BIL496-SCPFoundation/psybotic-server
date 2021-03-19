@@ -11,6 +11,7 @@ import java.util.List;
 public interface UserRepository extends MongoRepository<User, String> {
 
     User findUserByGoogleId(String googleId);
-    List<User> findUserByNearly(String location,double longitude,double latitude);
+    @Query(value = "{ 'firstName' : ?0 }")
+    List<User> findNearbyUsers(String location,double longitude,double latitude);
 
 }

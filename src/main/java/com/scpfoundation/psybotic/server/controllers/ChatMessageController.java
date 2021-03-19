@@ -2,10 +2,7 @@ package com.scpfoundation.psybotic.server.controllers;
 
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.ChatMessage;
-import com.scpfoundation.psybotic.server.models.User;
-import com.scpfoundation.psybotic.server.serviceInterfaces.ICRUDService;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IChatMessageService;
-import com.scpfoundation.psybotic.server.serviceInterfaces.IUserService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

@@ -2,14 +2,12 @@ package com.scpfoundation.psybotic.server.controllers;
 
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.*;
-import com.scpfoundation.psybotic.server.serviceInterfaces.ICRUDService;
+
 import com.scpfoundation.psybotic.server.serviceInterfaces.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.repository.Query;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.awt.print.Pageable;
 import java.util.List;
 
 @RestController
@@ -79,4 +77,8 @@ public class UserController {
         return userService.findNotifications(userId);
     }
 
+    @PostMapping("/updateDeviceToken")
+    public ResponseEntity<GeneralResponse> updateDeviceToken(@RequestBody User user) {
+        return userService.updateDeviceToken(user);
+    }
 }
