@@ -36,7 +36,6 @@ public class UserController {
         return userService.findByNearLocations(city,latitude,longitude);
     }
 
-
     @PostMapping("/update")
     public ResponseEntity<GeneralResponse> update(@RequestBody User updatedUser) {
         return userService.update(updatedUser);

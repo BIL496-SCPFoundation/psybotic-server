@@ -11,7 +11,16 @@ import java.util.List;
 public interface UserRepository extends MongoRepository<User, String> {
 
     User findUserByGoogleId(String googleId);
-    @Query(value = "{ 'firstName' : ?0 }")
+    @Query(value = "{ location :\n" +
+            "       { $near :\n" +
+            "          {\n" +
+            "            $geometry : {\n" +
+            "               type : \"Point\" ,\n" +
+            "               coordinates : [?1, ?2] },\n" +
+            "            $maxDistance : 1\n" +
+            "          }\n" +
+            "       }\n" +
+            "  }")
     List<User> findNearbyUsers(String location,double longitude,double latitude);
 
 }
