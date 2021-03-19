@@ -1,14 +1,8 @@
 package com.scpfoundation.psybotic.server.services;
 
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
-import com.scpfoundation.psybotic.server.models.EmergencyContact;
-import com.scpfoundation.psybotic.server.models.FamilyMemberUser;
-import com.scpfoundation.psybotic.server.models.MentalState;
-import com.scpfoundation.psybotic.server.models.User;
-import com.scpfoundation.psybotic.server.repositories.EmergencyContactRepository;
-import com.scpfoundation.psybotic.server.repositories.FamilyMemberRepository;
-import com.scpfoundation.psybotic.server.repositories.MentalStateRepository;
-import com.scpfoundation.psybotic.server.repositories.UserRepository;
+import com.scpfoundation.psybotic.server.models.*;
+import com.scpfoundation.psybotic.server.repositories.*;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IUserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -24,13 +18,15 @@ public class UserService extends CRUDService<UserRepository, User> implements IU
     private final EmergencyContactRepository emergencyContactRepository;
     private final FamilyMemberRepository familyMemberRepository;
     private final MentalStateRepository mentalStateRepository;
+    private final NotificationRepository notificationRepository;
 
-    public UserService(UserRepository userRepository, EmergencyContactRepository emergencyContactRepository, FamilyMemberRepository familyMemberRepository, MentalStateRepository mentalStateRepository) {
+    public UserService(UserRepository userRepository, NotificationRepository notificationRepository, EmergencyContactRepository emergencyContactRepository, FamilyMemberRepository familyMemberRepository, MentalStateRepository mentalStateRepository) {
         super(userRepository);
         this.userRepository = userRepository;
         this.emergencyContactRepository = emergencyContactRepository;
         this.familyMemberRepository = familyMemberRepository;
         this.mentalStateRepository = mentalStateRepository;
+        this.notificationRepository=notificationRepository;
     }
 
     @Override
@@ -58,6 +54,16 @@ public class UserService extends CRUDService<UserRepository, User> implements IU
     public List<MentalState> findMentalStates(String userId) {
         return mentalStateRepository.findBySuperId(userId);
     }
+
+    @Override
+    public List<Notification> findNotifications(String userId) {
+        return notificationRepository.findByUserId(userId);
+    }
+
+    public List<User> findByNearLocations(String city, double latitude, double longitude) {
+        return userRepository.findNearbyUsers(city,latitude,longitude);
+    }
+
 
     @Override
     @Transactional

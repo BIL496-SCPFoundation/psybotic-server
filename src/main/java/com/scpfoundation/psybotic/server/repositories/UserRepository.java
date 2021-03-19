@@ -5,8 +5,13 @@ import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 @Repository
 public interface UserRepository extends MongoRepository<User, String> {
 
     User findUserByGoogleId(String googleId);
+    @Query(value = "{ 'firstName' : ?0 }")
+    List<User> findNearbyUsers(String location,double longitude,double latitude);
+
 }

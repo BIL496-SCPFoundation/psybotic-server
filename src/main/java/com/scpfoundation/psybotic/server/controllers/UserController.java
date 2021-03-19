@@ -1,13 +1,10 @@
 package com.scpfoundation.psybotic.server.controllers;
 
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
-import com.scpfoundation.psybotic.server.models.EmergencyContact;
-import com.scpfoundation.psybotic.server.models.FamilyMemberUser;
-import com.scpfoundation.psybotic.server.models.MentalState;
-import com.scpfoundation.psybotic.server.models.User;
-import com.scpfoundation.psybotic.server.serviceInterfaces.ICRUDService;
+import com.scpfoundation.psybotic.server.models.*;
+
 import com.scpfoundation.psybotic.server.serviceInterfaces.IUserService;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -33,6 +30,12 @@ public class UserController {
     public User findById(@RequestParam("id") String id) {
         return userService.findById(id);
     }
+
+    @GetMapping("/findByNearLocation")
+    public List<User> findByNearLocation(@RequestParam("city") String city,@RequestParam("latitude") double latitude,@RequestParam("longitude") double longitude) {
+        return userService.findByNearLocations(city,latitude,longitude);
+    }
+
 
     @PostMapping("/update")
     public ResponseEntity<GeneralResponse> update(@RequestBody User updatedUser) {
@@ -67,6 +70,11 @@ public class UserController {
     @GetMapping("/mentalStates")
     public List<MentalState> findMentalStates(@RequestParam("userId") String userId) {
         return userService.findMentalStates(userId);
+    }
+
+    @GetMapping("/notifications")
+    public List<Notification> findNotifications(@RequestParam("userId") String userId) {
+        return userService.findNotifications(userId);
     }
 
     @PostMapping("/updateDeviceToken")
