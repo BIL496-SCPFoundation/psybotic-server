@@ -17,6 +17,7 @@ public class User implements BasicModel<String>{
     private String city;
     private String maritalStatus;
     private double latitude;
+    private String imageUrl;
 
     public double getLatitude() {
         return latitude;
@@ -107,6 +108,14 @@ public class User implements BasicModel<String>{
 
     public void setMaritalStatus(String maritalStatus) {
         this.maritalStatus = maritalStatus;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     @Override
