@@ -12,7 +12,13 @@ public class Psychologist implements BasicModel<String>{
     private Date createdDate;
     private String firstName;
     private String lastName;
-    private String title;
+    private String expertise;
+    private String ageOfInterest;
+    private String[] educations;
+    private String[] titles;
+    private String biography;
+    private String imageURL;
+    private boolean approved = false;
 
     public String getFirstName() {
         return firstName;
@@ -30,12 +36,64 @@ public class Psychologist implements BasicModel<String>{
         this.lastName = lastName;
     }
 
-    public String getTitle() {
-        return title;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public String getExpertise() {
+        return expertise;
+    }
+
+    public void setExpertise(String expertise) {
+        this.expertise = expertise;
+    }
+
+    public String getAgeOfInterest() {
+        return ageOfInterest;
+    }
+
+    public void setAgeOfInterest(String ageOfInterest) {
+        this.ageOfInterest = ageOfInterest;
+    }
+
+    public String[] getEducations() {
+        return educations;
+    }
+
+    public void setEducations(String[] educations) {
+        this.educations = educations;
+    }
+
+    public String[] getTitles() {
+        return titles;
+    }
+
+    public void setTitles(String[] titles) {
+        this.titles = titles;
+    }
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
     }
 
     public String getId() {
