@@ -3,6 +3,7 @@ package com.scpfoundation.psybotic.server.models;
 import org.springframework.data.annotation.Id;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
 
@@ -20,6 +21,24 @@ public class Psychologist implements BasicModel<String>{
     private String imageURL;
     private boolean approved = false;
 
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -34,10 +53,6 @@ public class Psychologist implements BasicModel<String>{
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public void setCreatedDate(Date createdDate) {
-        this.createdDate = createdDate;
     }
 
     public String getExpertise() {
@@ -96,33 +111,19 @@ public class Psychologist implements BasicModel<String>{
         this.approved = approved;
     }
 
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public Date getCreatedDate() {
-        return createdDate;
-    }
-
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Psychologist)) return false;
-        Psychologist psychologist = (Psychologist) o;
-        return id.equals(psychologist.id) &&
-                Objects.equals(getCreatedDate(), psychologist.getCreatedDate());
+        Psychologist that = (Psychologist) o;
+        return isApproved() == that.isApproved() && Objects.equals(getId(), that.getId()) && Objects.equals(getCreatedDate(), that.getCreatedDate()) && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getExpertise(), that.getExpertise()) && Objects.equals(getAgeOfInterest(), that.getAgeOfInterest()) && Arrays.equals(getEducations(), that.getEducations()) && Arrays.equals(getTitles(), that.getTitles()) && Objects.equals(getBiography(), that.getBiography()) && Objects.equals(getImageURL(), that.getImageURL());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getCreatedDate());
+        int result = Objects.hash(getId(), getCreatedDate(), getFirstName(), getLastName(), getExpertise(), getAgeOfInterest(), getBiography(), getImageURL(), isApproved());
+        result = 31 * result + Arrays.hashCode(getEducations());
+        result = 31 * result + Arrays.hashCode(getTitles());
+        return result;
     }
 }
