@@ -3,6 +3,7 @@ package com.scpfoundation.psybotic.server.models;
 import org.springframework.data.annotation.Id;
 
 import java.sql.Timestamp;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.Objects;
 
@@ -12,7 +13,31 @@ public class Psychologist implements BasicModel<String>{
     private Date createdDate;
     private String firstName;
     private String lastName;
-    private String title;
+    private String expertise;
+    private String ageOfInterest;
+    private String[] educations;
+    private String[] titles;
+    private String biography;
+    private String imageURL;
+    private boolean approved = false;
+
+    @Override
+    public String getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
+    }
 
     public String getFirstName() {
         return firstName;
@@ -30,41 +55,75 @@ public class Psychologist implements BasicModel<String>{
         this.lastName = lastName;
     }
 
-    public String getTitle() {
-        return title;
+    public String getExpertise() {
+        return expertise;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setExpertise(String expertise) {
+        this.expertise = expertise;
     }
 
-    public String getId() {
-        return id;
+    public String getAgeOfInterest() {
+        return ageOfInterest;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setAgeOfInterest(String ageOfInterest) {
+        this.ageOfInterest = ageOfInterest;
     }
 
-    public Date getCreatedDate() {
-        return createdDate;
+    public String[] getEducations() {
+        return educations;
     }
 
-    public void setCreatedDate(Timestamp createdDate) {
-        this.createdDate = createdDate;
+    public void setEducations(String[] educations) {
+        this.educations = educations;
+    }
+
+    public String[] getTitles() {
+        return titles;
+    }
+
+    public void setTitles(String[] titles) {
+        this.titles = titles;
+    }
+
+    public String getBiography() {
+        return biography;
+    }
+
+    public void setBiography(String biography) {
+        this.biography = biography;
+    }
+
+    public String getImageURL() {
+        return imageURL;
+    }
+
+    public void setImageURL(String imageURL) {
+        this.imageURL = imageURL;
+    }
+
+    public boolean isApproved() {
+        return approved;
+    }
+
+    public void setApproved(boolean approved) {
+        this.approved = approved;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Psychologist)) return false;
-        Psychologist psychologist = (Psychologist) o;
-        return id.equals(psychologist.id) &&
-                Objects.equals(getCreatedDate(), psychologist.getCreatedDate());
+        Psychologist that = (Psychologist) o;
+        return isApproved() == that.isApproved() && Objects.equals(getId(), that.getId()) && Objects.equals(getCreatedDate(), that.getCreatedDate()) && Objects.equals(getFirstName(), that.getFirstName()) && Objects.equals(getLastName(), that.getLastName()) && Objects.equals(getExpertise(), that.getExpertise()) && Objects.equals(getAgeOfInterest(), that.getAgeOfInterest()) && Arrays.equals(getEducations(), that.getEducations()) && Arrays.equals(getTitles(), that.getTitles()) && Objects.equals(getBiography(), that.getBiography()) && Objects.equals(getImageURL(), that.getImageURL());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, getCreatedDate());
+        int result = Objects.hash(getId(), getCreatedDate(), getFirstName(), getLastName(), getExpertise(), getAgeOfInterest(), getBiography(), getImageURL(), isApproved());
+        result = 31 * result + Arrays.hashCode(getEducations());
+        result = 31 * result + Arrays.hashCode(getTitles());
+        return result;
     }
 }

@@ -6,6 +6,7 @@ import com.scpfoundation.psybotic.server.repositories.PsychologistRepository;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IPsychologistService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -19,4 +20,15 @@ public class PsychologistService
         super(psychologistRepository);
         this.psychologistRepository = psychologistRepository;
     }
+
+    @Override
+    public List<Psychologist> getApplicants() {
+        return psychologistRepository.findAllByApprovedIsNot(true);
+    }
+
+    @Override
+    public List<Psychologist> getVerifiedPsychologists() {
+        return psychologistRepository.findAlByApprovedIs(true);
+    }
+
 }

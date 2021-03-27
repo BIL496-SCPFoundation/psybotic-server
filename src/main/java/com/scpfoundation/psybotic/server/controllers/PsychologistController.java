@@ -7,6 +7,8 @@ import com.scpfoundation.psybotic.server.serviceInterfaces.IPsychologistService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/psychologists")
 @CrossOrigin("*")
@@ -14,8 +16,9 @@ public class PsychologistController {
 
     private final IPsychologistService psychologistService;
 
-    public PsychologistController(IPsychologistService psychologistService) {this.psychologistService = psychologistService;}
-
+    public PsychologistController(IPsychologistService psychologistService) {
+        this.psychologistService = psychologistService;
+    }
 
     @PostMapping("/insert")
     public ResponseEntity<GeneralResponse> insert(@RequestBody Psychologist psychologist) {
@@ -40,5 +43,15 @@ public class PsychologistController {
     @DeleteMapping("/delete")
     public ResponseEntity<GeneralResponse> deleteById(@RequestBody Psychologist psychologist) {
         return psychologistService.delete(psychologist);
+    }
+
+    @GetMapping("/applicants")
+    public List<Psychologist> getApplicants() {
+        return psychologistService.getApplicants();
+    }
+
+    @GetMapping("/verifiedPsychologists")
+    public List<Psychologist> getVerifiedPsychologists() {
+        return psychologistService.getVerifiedPsychologists();
     }
 }

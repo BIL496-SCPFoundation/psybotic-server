@@ -18,6 +18,7 @@ public class User implements BasicModel<String>{
     private String city;
     private String maritalStatus;
     private double latitude;
+    private String imageUrl;
 
     public Double[] getLocation() {
         return location;
@@ -120,7 +121,13 @@ public class User implements BasicModel<String>{
         this.maritalStatus = maritalStatus;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
 
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     @Override
     public boolean equals(Object o) {
