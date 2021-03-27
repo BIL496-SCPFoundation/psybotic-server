@@ -1,6 +1,7 @@
 package com.scpfoundation.psybotic.server.models;
 
 
+import com.mongodb.client.model.geojson.Point;
 import org.springframework.data.annotation.Id;
 
 import java.util.Objects;
@@ -18,6 +19,16 @@ public class User implements BasicModel<String>{
     private String maritalStatus;
     private double latitude;
     private String imageUrl;
+
+    public Double[] getLocation() {
+        return location;
+    }
+
+    public void setLocation(Double[] location) {
+        this.location = location;
+    }
+
+    private Double[] location;
 
     public double getLatitude() {
         return latitude;
