@@ -9,11 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.Objects;
-
 @Service
 public class StorageService implements IStorageService{
 
@@ -25,12 +20,12 @@ public class StorageService implements IStorageService{
     }
 
     @Override
-    public ResponseEntity<GeneralResponse> upload(MultipartFile file) {
+    public ResponseEntity<GeneralResponse> upload(MultipartFile file, String fileName) {
         GeneralResponse res = new GeneralResponse();
         try {
             if (file != null && !file.isEmpty()) {
-                BlobId blobId = BlobId.of(BUCKET_NAME, Objects.requireNonNull(file.getOriginalFilename()));
-                BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("pdf").build();
+                BlobId blobId = BlobId.of(BUCKET_NAME, fileName);
+                BlobInfo blobInfo = BlobInfo.newBuilder(blobId).setContentType("application/pdf").build();
                 storage.create(blobInfo, file.getBytes());
                 res.setMessage("Successfully uploaded file to Firebase Storage");
                 res.setStatus(HttpStatus.OK.value());
@@ -51,14 +46,4 @@ public class StorageService implements IStorageService{
             return new ResponseEntity<>(res, HttpStatus.INTERNAL_SERVER_ERROR);
         }
     }
-
-    private File convertToFile(MultipartFile multipartFile, String fileName) throws IOException {
-        File tempFile = new File(fileName);
-        try (FileOutputStream fos = new FileOutputStream(tempFile)) {
-            fos.write(multipartFile.getBytes());
-            fos.close();
-        }
-        return tempFile;
-    }
-
 }

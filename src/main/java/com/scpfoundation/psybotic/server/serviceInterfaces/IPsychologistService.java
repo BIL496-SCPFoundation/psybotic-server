@@ -11,4 +11,5 @@ public interface IPsychologistService extends ICRUDService<Psychologist, String>
 
     List<Psychologist> getVerifiedPsychologists();
 
+    List<Psychologist> getOldApplicants();
 }

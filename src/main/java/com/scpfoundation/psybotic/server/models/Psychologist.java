@@ -10,7 +10,7 @@ import java.util.Objects;
 public class Psychologist implements BasicModel<String>{
     @Id
     private String id;
-    private Date createdDate;
+    private Date createdDate = new Date(System.currentTimeMillis());
     private String firstName;
     private String lastName;
     private String expertise;
@@ -20,6 +20,7 @@ public class Psychologist implements BasicModel<String>{
     private String biography;
     private String imageURL;
     private boolean approved = false;
+    private boolean rejected = false;
 
     @Override
     public String getId() {
@@ -109,6 +110,14 @@ public class Psychologist implements BasicModel<String>{
 
     public void setApproved(boolean approved) {
         this.approved = approved;
+    }
+
+    public boolean isRejected() {
+        return rejected;
+    }
+
+    public void setRejected(boolean rejected) {
+        this.rejected = rejected;
     }
 
     @Override
