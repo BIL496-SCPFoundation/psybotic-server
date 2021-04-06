@@ -14,7 +14,15 @@ public class Disaster implements BasicModel<String>{
     private Date date;
     private double latitude;
     private double longitude;
+    private double magnitude;
 
+    public double getMagnitude() {
+        return magnitude;
+    }
+
+    public void setMagnitude(double magnitude) {
+        this.magnitude = magnitude;
+    }
 
     public void setLongitude(int longitude) {
         this.longitude = longitude;
