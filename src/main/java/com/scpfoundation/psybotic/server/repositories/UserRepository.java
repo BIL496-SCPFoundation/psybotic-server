@@ -19,7 +19,7 @@ public interface UserRepository extends MongoRepository<User, String> {
             "            $geometry : {\n" +
             "               type : \"Point\" ,\n" +
             "               coordinates : [?1, ?2] },\n" +
-            "            $maxDistance : 1\n" +
+            "            $maxDistance : 40000\n" +
             "          }\n" +
             "       }\n" +
             "  }")
