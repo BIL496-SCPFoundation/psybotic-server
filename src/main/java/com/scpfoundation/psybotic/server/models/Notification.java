@@ -15,6 +15,15 @@ public class Notification implements BasicModel<String> {
     private boolean reply;
     private Date sendingDate;
     private Date replyDate;
+    private boolean bildiri;
+
+    public boolean isBildiri() {
+        return bildiri;
+    }
+
+    public void setBildiri(boolean bildiri) {
+        this.bildiri = bildiri;
+    }
 
     @Override
     public String toString() {
