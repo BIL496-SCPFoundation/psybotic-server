@@ -1,12 +1,23 @@
 package com.scpfoundation.psybotic.server.serviceInterfaces;
 
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
-import com.scpfoundation.psybotic.server.models.User;
+import com.scpfoundation.psybotic.server.models.*;
+import org.springframework.http.ResponseEntity;
 
-public interface IUserService {
+import java.util.List;
 
-    GeneralResponse insert(User user);
+public interface IUserService extends ICRUDService<User, String> {
+    User login(User user);
 
-    User findById(String id);
+    List<EmergencyContact> findEmergencyContacts(String userId);
 
+    List<FamilyMemberUser> findFamilyMembers(String userId);
+
+    List<MentalState> findMentalStates(String userId);
+
+    List<Notification> findNotifications(String userId);
+
+    List<User> findByNearLocations(String city, double latitude, double longitude);
+
+    ResponseEntity<GeneralResponse> updateDeviceToken(User user);
 }
