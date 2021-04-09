@@ -5,5 +5,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.multipart.MultipartFile;
 
 public interface IStorageService {
-    ResponseEntity<GeneralResponse> upload(MultipartFile file);
+    ResponseEntity<GeneralResponse> upload(MultipartFile file, String fileName);
+
 }

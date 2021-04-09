@@ -1,13 +1,11 @@
 package com.scpfoundation.psybotic.server.services;
 
-import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.Psychologist;
 import com.scpfoundation.psybotic.server.repositories.PsychologistRepository;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IPsychologistService;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class PsychologistService
@@ -23,12 +21,17 @@ public class PsychologistService
 
     @Override
     public List<Psychologist> getApplicants() {
-        return psychologistRepository.findAllByApprovedIsNot(true);
+        return psychologistRepository.findAllApplicants();
     }
 
     @Override
     public List<Psychologist> getVerifiedPsychologists() {
-        return psychologistRepository.findAlByApprovedIs(true);
+        return psychologistRepository.findAllVerifiedPsychologists();
+    }
+
+    @Override
+    public List<Psychologist> getOldApplicants() {
+        return psychologistRepository.findAllOldApplicants();
     }
 
 }

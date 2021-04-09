@@ -54,4 +54,9 @@ public class PsychologistController {
     public List<Psychologist> getVerifiedPsychologists() {
         return psychologistService.getVerifiedPsychologists();
     }
+
+    @GetMapping("/oldApplicants")
+    public List<Psychologist> getOldApplicants() {
+        return psychologistService.getOldApplicants();
+    }
 }

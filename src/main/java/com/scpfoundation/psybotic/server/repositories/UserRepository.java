@@ -12,7 +12,6 @@ import java.util.List;
 @CrossOrigin("*")
 public interface UserRepository extends MongoRepository<User, String> {
 
-    User findUserByGoogleId(String googleId);
     @Query(value = "{ location :\n" +
             "       { $near :\n" +
             "          {\n" +
