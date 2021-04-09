@@ -17,4 +17,8 @@ public interface NotificationRepository extends MongoRepository<Notification,Str
 
     @Query("{'city :?0, " + "longitude :?0," + "latitude :?0 } ")
     List<User> findByNearLocations(String city, double latitude, double longitude);
+
+    @Query("{reply: false,bildiri: false}")
+    List<Notification> findByNotificationNoReplyed(Boolean reply,Boolean bildiri);
+
 }
