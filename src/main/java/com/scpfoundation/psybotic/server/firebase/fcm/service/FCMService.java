@@ -4,9 +4,9 @@ import com.google.firebase.messaging.*;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
-import com.scpfoundation.psybotic.server.firebase.fcm.parameter.NotificationParameter;
+import com.scpfoundation.psybotic.server.firebase.fcm.parameter.MessageParameter;
 import com.scpfoundation.psybotic.server.firebase.fcm.model.MessageData;
-import com.scpfoundation.psybotic.server.firebase.fcm.model.PushNotificationRequest;
+import com.scpfoundation.psybotic.server.firebase.fcm.model.FirebaseMessageRequest;
 //import com.scpfoundation.psybotic.server.models.DeviceInfo;
 //import com.scpfoundation.psybotic.server.serviceinterfaces.IDeviceInfoService;
 import org.slf4j.Logger;
@@ -28,7 +28,7 @@ public class FCMService {
 //        this.deviceInfoService = deviceInfoService;
 //    }
 
-    public void sendMessage(MessageData data, PushNotificationRequest request)
+    public void sendMessage(MessageData data, FirebaseMessageRequest request)
             throws InterruptedException, ExecutionException {
         Message message = getPreconfiguredMessageWithData(data, request);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -37,14 +37,14 @@ public class FCMService {
         logger.info("Sent message with data. Topic: " + request.getTopic() + ", " + response+ " msg "+jsonOutput);
     }
 
-    public void sendMessageWithoutData(PushNotificationRequest request)
+    public void sendMessageWithoutData(FirebaseMessageRequest request)
             throws InterruptedException, ExecutionException {
         Message message = getPreconfiguredMessageWithoutData(request);
         String response = sendAndGetResponse(message);
         logger.info("Sent message without data. Topic: " + request.getTopic() + ", " + response);
     }
 
-    public void sendMessageToToken(PushNotificationRequest request)
+    public void sendMessageToToken(FirebaseMessageRequest request)
             throws InterruptedException, ExecutionException {
         Message message = getPreconfiguredMessageToToken(request);
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -71,8 +71,8 @@ public class FCMService {
         return AndroidConfig.builder()
                 .setTtl(Duration.ofMinutes(2).toMillis()).setCollapseKey(topic)
                 .setPriority(AndroidConfig.Priority.NORMAL)
-                .setNotification(AndroidNotification.builder().setSound(NotificationParameter.SOUND.getValue())
-                        .setColor(NotificationParameter.COLOR.getValue()).setTag(topic).build()).build();
+                .setNotification(AndroidNotification.builder().setSound(MessageParameter.SOUND.getValue())
+                        .setColor(MessageParameter.COLOR.getValue()).setTag(topic).build()).build();
     }
 
     private ApnsConfig getApnsConfig(String topic) {
@@ -80,17 +80,17 @@ public class FCMService {
                 .setAps(Aps.builder().setCategory(topic).setThreadId(topic).build()).build();
     }
 
-    private Message getPreconfiguredMessageToToken(PushNotificationRequest request) {
+    private Message getPreconfiguredMessageToToken(FirebaseMessageRequest request) {
         return getPreconfiguredMessageBuilder(request).setToken(request.getToken())
                 .build();
     }
 
-    private Message getPreconfiguredMessageWithoutData(PushNotificationRequest request) {
+    private Message getPreconfiguredMessageWithoutData(FirebaseMessageRequest request) {
         return getPreconfiguredMessageBuilder(request).setTopic(request.getTopic())
                 .build();
     }
 
-    private Message getPreconfiguredMessageWithData(MessageData data, PushNotificationRequest request) {
+    private Message getPreconfiguredMessageWithData(MessageData data, FirebaseMessageRequest request) {
         Gson gson = new Gson();
         String jsonString = gson.toJson(data, MessageData.class);
         Map<String, String> _data = new Gson().fromJson(jsonString,
@@ -99,7 +99,7 @@ public class FCMService {
                 .build();
     }
 
-    private Message.Builder getPreconfiguredMessageBuilder(PushNotificationRequest request) {
+    private Message.Builder getPreconfiguredMessageBuilder(FirebaseMessageRequest request) {
         AndroidConfig androidConfig = getAndroidConfig(request.getTopic());
         ApnsConfig apnsConfig = getApnsConfig(request.getTopic());
         return Message.builder()

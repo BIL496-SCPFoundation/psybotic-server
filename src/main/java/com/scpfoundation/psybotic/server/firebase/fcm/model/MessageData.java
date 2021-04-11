@@ -8,6 +8,7 @@ import java.util.Date;
 public class MessageData {
     @DocumentId
     private String id;
+    private String chatRoomId;
     private String receiverId;
     private String senderId;
     private String message;
@@ -21,6 +22,14 @@ public class MessageData {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getChatRoomId() {
+        return chatRoomId;
+    }
+
+    public void setChatRoomId(String chatRoomId) {
+        this.chatRoomId = chatRoomId;
     }
 
     public Timestamp getDate() {
