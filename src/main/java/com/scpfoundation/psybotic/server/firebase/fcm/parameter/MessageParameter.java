@@ -1,11 +1,11 @@
 package com.scpfoundation.psybotic.server.firebase.fcm.parameter;
-public enum NotificationParameter {
+public enum MessageParameter {
     SOUND("default"),
     COLOR("#FFFF00");
 
     private String value;
 
-    NotificationParameter(String value) {
+    MessageParameter(String value) {
         this.value = value;
     }
 

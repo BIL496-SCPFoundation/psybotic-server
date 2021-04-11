@@ -1,13 +1,13 @@
 package com.scpfoundation.psybotic.server.firebase.fcm.model;
-public class PushNotificationResponse {
+public class FirebaseMessageResponse {
 
     private int status;
     private String message;
 
-    public PushNotificationResponse() {
+    public FirebaseMessageResponse() {
     }
 
-    public PushNotificationResponse(int status, String message) {
+    public FirebaseMessageResponse(int status, String message) {
         this.status = status;
         this.message = message;
     }

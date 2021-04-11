@@ -1,6 +1,6 @@
 package com.scpfoundation.psybotic.server.firebase.fcm.model;
 
-public class PushNotificationRequest {
+public class FirebaseMessageRequest {
 
     private String title;
     private String message;
