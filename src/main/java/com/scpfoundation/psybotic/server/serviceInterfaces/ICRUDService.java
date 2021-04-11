@@ -3,6 +3,7 @@ package com.scpfoundation.psybotic.server.serviceInterfaces;
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.BasicModel;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 /**
  *
