@@ -2,11 +2,13 @@ package com.scpfoundation.psybotic.server.services;
 
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.EmergencyContact;
+import com.scpfoundation.psybotic.server.models.Notification;
 import com.scpfoundation.psybotic.server.models.User;
 import com.scpfoundation.psybotic.server.repositories.EmergencyContactRepository;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IEmergencyContactService;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,4 +22,8 @@ public class EmergencyContactService
         super(emergencyContactRepository);
         this.emergencyContactRepository = emergencyContactRepository;
     }
+    public List<EmergencyContact> findByEmergencyContact(String id) {
+        return emergencyContactRepository.findBySuperId(id);
+    }
+
 }

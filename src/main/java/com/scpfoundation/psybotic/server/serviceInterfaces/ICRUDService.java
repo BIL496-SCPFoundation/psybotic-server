@@ -2,7 +2,10 @@ package com.scpfoundation.psybotic.server.serviceInterfaces;
 
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.BasicModel;
+import com.scpfoundation.psybotic.server.models.EmergencyContact;
 import org.springframework.http.ResponseEntity;
+
+import java.util.List;
 
 /**
  *
@@ -19,4 +22,6 @@ public interface ICRUDService<E extends BasicModel, T> {
     ResponseEntity<GeneralResponse> delete(E entity);
 
     ResponseEntity<GeneralResponse> update(E entity);
+
+    List<EmergencyContact> findBySuperId(String id);
 }
