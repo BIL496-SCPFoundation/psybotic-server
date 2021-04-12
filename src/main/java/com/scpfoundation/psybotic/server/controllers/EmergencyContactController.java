@@ -7,6 +7,8 @@ import com.scpfoundation.psybotic.server.serviceInterfaces.IEmergencyContactServ
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 
 @RestController
 @RequestMapping("/emergencyContacts")
@@ -26,6 +28,12 @@ public class EmergencyContactController {
     @GetMapping("/findById")
     public EmergencyContact findById(@RequestParam("id") String id) {
         return emergencyContactService.findById(id);
+    }
+
+    @GetMapping("/findBySuperId")
+    public List<EmergencyContact> findBySuperId(@RequestParam("super_id") String id) {
+        System.out.println(id);
+        return emergencyContactService.findByEmergencyContact(id);
     }
 
     @PostMapping("/update")

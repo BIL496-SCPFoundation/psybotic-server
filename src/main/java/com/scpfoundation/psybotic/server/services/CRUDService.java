@@ -2,12 +2,14 @@ package com.scpfoundation.psybotic.server.services;
 
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.BasicModel;
+import com.scpfoundation.psybotic.server.models.EmergencyContact;
 import com.scpfoundation.psybotic.server.serviceInterfaces.ICRUDService;
 import org.springframework.data.mongodb.repository.MongoRepository;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
 import java.util.Optional;
 
 /**
@@ -144,5 +146,10 @@ public class CRUDService<T extends MongoRepository<E, String>,
         } else {
             return new ResponseEntity<>(res, HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @Override
+    public List<EmergencyContact> findBySuperId(String id) {
+        return null;
     }
 }
