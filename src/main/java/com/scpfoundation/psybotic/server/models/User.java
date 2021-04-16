@@ -21,14 +21,14 @@ public class User implements BasicModel<String>{
     private String deviceToken;
     private Double[] location;
     private double mentalState;
-    private boolean isAdmin = false;
+    private boolean admin = false;
 
     public boolean isAdmin() {
-        return isAdmin;
+        return this.admin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        this.admin = admin;
     }
 
     public double getMentalState() {
