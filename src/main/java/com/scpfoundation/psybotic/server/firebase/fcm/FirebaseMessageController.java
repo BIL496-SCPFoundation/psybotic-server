@@ -1,6 +1,5 @@
 package com.scpfoundation.psybotic.server.firebase.fcm;
 
-import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.firebase.fcm.model.FirebaseMessageRequest;
 import com.scpfoundation.psybotic.server.firebase.fcm.model.FirebaseMessageResponse;
 import com.scpfoundation.psybotic.server.firebase.fcm.service.FirebaseMessageService;
@@ -46,7 +45,7 @@ public class FirebaseMessageController {
     }
 
     @PostMapping("/sendMessage")
-    public ResponseEntity<GeneralResponse> sendMessage(@RequestBody FirebaseMessageRequest request) {
+    public ResponseEntity<MessageResponse> sendMessage(@RequestBody FirebaseMessageRequest request) {
         return firebaseMessageService.sendMessage(request);
     }
 }
