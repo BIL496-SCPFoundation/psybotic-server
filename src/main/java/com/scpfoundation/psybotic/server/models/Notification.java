@@ -36,6 +36,7 @@ public class Notification implements BasicModel<String> {
                 ", reply=" + reply +
                 ", sendingDate=" + sendingDate +
                 ", replyDate=" + replyDate +
+                ", bildiri=" + bildiri +
                 '}';
     }
 
