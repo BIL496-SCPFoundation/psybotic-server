@@ -20,6 +20,7 @@ public class User implements BasicModel<String>{
     private String imageUrl;
     private String deviceToken;
     private Double[] location;
+    private double mentalState;
 
     public Double[] getLocation() {
         return location;
