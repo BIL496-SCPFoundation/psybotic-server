@@ -22,6 +22,14 @@ public class User implements BasicModel<String>{
     private Double[] location;
     private double mentalState;
 
+    public double getMentalState() {
+        return mentalState;
+    }
+
+    public void setMentalState(double mentalState) {
+        this.mentalState = mentalState;
+    }
+
     public Double[] getLocation() {
         return location;
     }
