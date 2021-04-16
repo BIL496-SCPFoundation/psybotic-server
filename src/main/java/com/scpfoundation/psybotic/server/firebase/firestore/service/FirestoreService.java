@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class FirestoreService implements IFirestoreService {
 
-    private MessageRepo messageRepo;
+    private final MessageRepo messageRepo;
     private final Firestore firestore;
 
     public FirestoreService(FirestoreConfig firestoreConfig, Firestore firestore) {

@@ -1,23 +1,30 @@
 package com.scpfoundation.psybotic.server.firebase.fcm.service;
 
-import com.google.gson.Gson;
+import com.google.cloud.firestore.Firestore;
+import com.google.firebase.database.annotations.Nullable;
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.firebase.fcm.MessageResponse;
 import com.scpfoundation.psybotic.server.firebase.fcm.model.AIMessage;
 import com.scpfoundation.psybotic.server.firebase.fcm.model.AIResponse;
 import com.scpfoundation.psybotic.server.firebase.fcm.model.MessageData;
 import com.scpfoundation.psybotic.server.firebase.fcm.model.FirebaseMessageRequest;
+import com.scpfoundation.psybotic.server.firebase.firestore.annotation.DocumentId;
 import com.scpfoundation.psybotic.server.firebase.firestore.service.IFirestoreService;
+import com.scpfoundation.psybotic.server.models.ChatMessage;
 import com.scpfoundation.psybotic.server.models.User;
+import com.scpfoundation.psybotic.server.serviceInterfaces.IChatMessageService;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IUserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Arrays;
 import java.util.Objects;
+import java.util.UUID;
 import java.util.concurrent.ExecutionException;
 
 @Service
@@ -30,11 +37,15 @@ public class FirebaseMessageService {
     private final IFirestoreService firestoreService;
     private RestTemplate rest = new RestTemplate();
     private final String AI_HOST = "https://psyboticrasa.herokuapp.com";
+    private final Firestore firestore;
+    private final IChatMessageService chatMessageService;
 
-    public FirebaseMessageService(FCMService fcmService, IUserService userService, IFirestoreService firestoreService) {
+    public FirebaseMessageService(FCMService fcmService, IUserService userService, IFirestoreService firestoreService, Firestore firestore, IChatMessageService chatMessageService) {
         this.fcmService = fcmService;
         this.userService = userService;
         this.firestoreService = firestoreService;
+        this.firestore = firestore;
+        this.chatMessageService = chatMessageService;
     }
 
 
@@ -85,7 +96,7 @@ public class FirebaseMessageService {
                 data.setSenderFirstName(sender.getFirstName());
                 data.setSenderLastName(sender.getLastName());
                 if (receiverIsChatbot) {
-                    sendMessageToChatbot(request, res, data);
+                    sendMessageToChatbot(request, res, data, sender);
                 } else {
                     sendMessageToUser(request, res, data, receiver);
                 }
@@ -104,7 +115,7 @@ public class FirebaseMessageService {
         }
     }
 
-    private void sendMessageToChatbot(FirebaseMessageRequest request, MessageResponse res, MessageData data) {
+    private void sendMessageToChatbot(FirebaseMessageRequest request, MessageResponse res, MessageData data, User sender) {
         String aiMessagePost = AI_HOST + "/webhooks/rest/webhook";
         AIMessage message = new AIMessage();
         message.setMessage(data.getMessage());
@@ -116,10 +127,30 @@ public class FirebaseMessageService {
         } else {
             res.setChatbotResponse(aiResponse.getBody()[0]);
         }
-        firestoreService.save(data);
+        firestore.collection("chats/chatbot/" + data.getChatRoomId()).document().set(data);
+        MessageData resMessage = new MessageData();
+        sendResponseMessage(res, data, resMessage);
+        if (sender.getDeviceToken() != null) {
+            //send response message to the user's device
+            request.setData(resMessage);
+            request.setToken(sender.getDeviceToken());
+            request.setTitle("Psybotic");
+            sendPushNotificationToToken(request);
+        }
+        chatMessageService.insert(new ChatMessage(data));
+        chatMessageService.insert(new ChatMessage(resMessage));
         res.setStatus(HttpStatus.OK.value());
         res.setMessage("Message sent successfully to the chatbot.");
         logger.info("Message sent to the psybotic and got a response");
+    }
+
+    private void sendResponseMessage(MessageResponse res, MessageData data, MessageData resMessage) {
+        resMessage.setChatRoomId(data.getChatRoomId());
+        resMessage.setReceiverId(data.getSenderId());
+        resMessage.setMessage(res.getChatbotResponse().getText());
+        resMessage.setSenderFirstName("Psybotic");
+        resMessage.setSenderId("chatbot");
+        firestore.collection("chats/chatbot/" + data.getChatRoomId()).document().set(resMessage);
     }
 
     private void sendMessageToUser(FirebaseMessageRequest request, GeneralResponse res, MessageData data,
@@ -132,11 +163,45 @@ public class FirebaseMessageService {
             res.setWarning("Receiver device token is empty. Therefore, the message or notification cannot be " +
                     "sent to the android device that the receiver using, if s/he is using one.");
         }
-        fcmService.sendMessage(data, request);
-        data.setChatRoomId(data.getSenderId() + data.getReceiverId());
-        firestoreService.save(data);
+        firestore.collection("chats/psychologist/" + data.getChatRoomId()).document().set(data);
         res.setStatus(HttpStatus.OK.value());
         res.setMessage("Message sent successfully");
         logger.info("Message sent to a real user");
     }
+
+    private String getDocumentId(MessageData data) {
+        Object key;
+        Class clzz = data.getClass();
+        do {
+            key = getKeyFromFields(clzz, data);
+            clzz = clzz.getSuperclass();
+        } while (key == null && clzz != null);
+
+        if (key == null) {
+            return UUID.randomUUID().toString();
+        }
+        return String.valueOf(key);
+
+    }
+
+    private Object getKeyFromFields(Class<?> clazz, Object t) {
+
+        return Arrays.stream(clazz.getDeclaredFields())
+                .filter(field -> field.isAnnotationPresent(DocumentId.class))
+                .findFirst()
+                .map(field -> getValue(t, field))
+                .orElse(null);
+    }
+
+    @Nullable
+    private Object getValue(Object t, java.lang.reflect.Field field) {
+        field.setAccessible(true);
+        try {
+            return field.get(t);
+        } catch (IllegalAccessException e) {
+            logger.error("Error in getting documentId key", e);
+        }
+        return null;
+    }
+
 }
