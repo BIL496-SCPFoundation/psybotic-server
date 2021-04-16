@@ -7,6 +7,8 @@ import com.scpfoundation.psybotic.server.serviceInterfaces.INotificationService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/notifications")
 @CrossOrigin("*")
@@ -25,6 +27,11 @@ public class NotificationController {
     @GetMapping("/findById")
     public Notification findById(@RequestParam("id") String id) {
         return notificationService.findById(id);
+    }
+
+    @GetMapping("/findByNotificationNoReply")
+    public List<Notification> notificationNoAnswered(@RequestParam("reply") boolean reply, @RequestParam("bildiri") boolean bildiri ) {
+        return notificationService.findByNotificationNoReply(reply,bildiri);
     }
 
     @PostMapping("/update")
