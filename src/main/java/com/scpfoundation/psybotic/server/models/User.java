@@ -21,6 +21,15 @@ public class User implements BasicModel<String>{
     private String deviceToken;
     private Double[] location;
     private double mentalState;
+    private boolean isAdmin = false;
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
+    }
 
     public double getMentalState() {
         return mentalState;
