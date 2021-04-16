@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserService extends CRUDService<UserRepository, User> implements IUserService{
@@ -35,9 +36,24 @@ public class UserService extends CRUDService<UserRepository, User> implements IU
         /*
         googleId and id are the same
          */
-        user.setId(user.getGoogleId());
-        userRepository.save(user);
-        return user;
+        Optional<User> opt = userRepository.findById(user.getGoogleId());
+        if (opt.isPresent()) {
+            User tmp = opt.get();
+            updateAfterLogin(user, tmp);
+            return tmp;
+        } else {
+            user.setId(user.getGoogleId());
+            userRepository.save(user);
+            return user;
+        }
+    }
+
+    private void updateAfterLogin(User user, User tmp) {
+        if (user.getDeviceToken() != null && !user.getDeviceToken().equals("")) {
+            tmp.setDeviceToken(user.getDeviceToken());
+        }
+        tmp.setImageUrl(user.getImageUrl());
+        userRepository.save(tmp);
     }
 
     @Override
