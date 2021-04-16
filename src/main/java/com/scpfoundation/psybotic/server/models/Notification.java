@@ -7,7 +7,7 @@ import java.util.Objects;
 
 public class Notification implements BasicModel<String> {
     @Id
-    private String notificationId;
+    private String id;
     private String userId;
     private String textHeader;
     private String text;
@@ -28,7 +28,7 @@ public class Notification implements BasicModel<String> {
     @Override
     public String toString() {
         return "Notification{" +
-                "notificationId='" + notificationId + '\'' +
+                "id='" + id + '\'' +
                 ", userId='" + userId + '\'' +
                 ", textHeader='" + textHeader + '\'' +
                 ", text='" + text + '\'' +
@@ -40,12 +40,12 @@ public class Notification implements BasicModel<String> {
     }
 
 
-    public String getNotificationId() {
-        return notificationId;
+    public String getId() {
+        return id;
     }
 
-    public void setNotificationId(String notificationId) {
-        this.notificationId = notificationId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getUserId() {
@@ -108,21 +108,12 @@ public class Notification implements BasicModel<String> {
         if (this == o) return true;
         if (!(o instanceof Notification)) return false;
         Notification that = (Notification) o;
-        return isStatus() == that.isStatus() && isReply() == that.isReply() && Objects.equals(getNotificationId(), that.getNotificationId()) && Objects.equals(getUserId(), that.getUserId()) && Objects.equals(getTextHeader(), that.getTextHeader()) && Objects.equals(getText(), that.getText()) && Objects.equals(getSendingDate(), that.getSendingDate()) && Objects.equals(getReplyDate(), that.getReplyDate());
+        return isStatus() == that.isStatus() && isReply() == that.isReply() && Objects.equals(getId(), that.getId()) && Objects.equals(getUserId(), that.getUserId()) && Objects.equals(getTextHeader(), that.getTextHeader()) && Objects.equals(getText(), that.getText()) && Objects.equals(getSendingDate(), that.getSendingDate()) && Objects.equals(getReplyDate(), that.getReplyDate());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getNotificationId(), getUserId(), getTextHeader(), getText(), isStatus(), isReply(), getSendingDate(), getReplyDate());
+        return Objects.hash(getId(), getUserId(), getTextHeader(), getText(), isStatus(), isReply(), getSendingDate(), getReplyDate());
     }
 
-
-    @Override
-    public String getId() {
-        return notificationId;
-    }
-    @Override
-    public void setId(String id) {
-        this.notificationId = id;
-    }
 }
