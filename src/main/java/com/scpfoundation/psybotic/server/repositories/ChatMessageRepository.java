@@ -11,6 +11,9 @@ import java.util.List;
 @Repository
 @CrossOrigin("*")
 public interface ChatMessageRepository extends MongoRepository<ChatMessage, String> {
-    @Query("{receiverId :?0} ")
-    List<ChatMessage> findBySenderId(String receiverId);
+    List<ChatMessage> findByReceiverId(String receiverId);
+
+    List<ChatMessage> findBySenderId(String senderId);
+
+    List<ChatMessage> findBySenderIdOrReceiverIdOrderByDateDesc(String receiverId, String senderId);
 }

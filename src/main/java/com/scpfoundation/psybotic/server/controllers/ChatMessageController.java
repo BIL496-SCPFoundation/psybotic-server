@@ -1,5 +1,6 @@
 package com.scpfoundation.psybotic.server.controllers;
 
+import com.scpfoundation.psybotic.server.custom.ChatRoomResponse;
 import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.ChatMessage;
 import com.scpfoundation.psybotic.server.serviceInterfaces.IChatMessageService;
@@ -43,10 +44,14 @@ public class ChatMessageController {
     public ResponseEntity<GeneralResponse> delete(@RequestBody ChatMessage chatMessage) {
         return chatMessageService.delete(chatMessage);
     }
+
     @GetMapping("/findByReceiverId")
     public List<ChatMessage> findByReceiverId(@RequestParam("receiverId") String receiverId) {
-        return chatMessageService.findByRecaiverId(receiverId);
+        return chatMessageService.findByReceiverId(receiverId);
     }
 
-
+    @GetMapping("/chatRooms")
+    public List<ChatRoomResponse> findChatRooms(@RequestParam("userId") String userId) {
+        return chatMessageService.getChatRooms(userId);
+    }
 }

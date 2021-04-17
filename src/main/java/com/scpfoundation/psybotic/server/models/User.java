@@ -22,6 +22,15 @@ public class User implements BasicModel<String>{
     private Double[] location;
     private double mentalState;
     private boolean admin = false;
+    private boolean psychologist = false;
+
+    public boolean isPsychologist() {
+        return psychologist;
+    }
+
+    public void setPsychologist(boolean psychologist) {
+        this.psychologist = psychologist;
+    }
 
     public boolean isAdmin() {
         return this.admin;

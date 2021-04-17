@@ -14,7 +14,7 @@ public class MessageData {
     private String message;
     private String senderFirstName;
     private String senderLastName;
-    private Timestamp date = new Timestamp(System.currentTimeMillis());
+    private Date date = new Date(System.currentTimeMillis());
 
     public String getId() {
         return id;
@@ -32,11 +32,11 @@ public class MessageData {
         this.chatRoomId = chatRoomId;
     }
 
-    public Timestamp getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

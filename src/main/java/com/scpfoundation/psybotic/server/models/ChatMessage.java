@@ -17,7 +17,7 @@ public class ChatMessage implements BasicModel<String>{
     private String message;
     private String senderFirstName;
     private String senderLastName;
-    private Timestamp date;
+    private Date date;
 
     public ChatMessage(MessageData messageData) {
         this.id = messageData.getId();
@@ -91,11 +91,11 @@ public class ChatMessage implements BasicModel<String>{
         this.senderLastName = senderLastName;
     }
 
-    public Timestamp getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(Timestamp date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

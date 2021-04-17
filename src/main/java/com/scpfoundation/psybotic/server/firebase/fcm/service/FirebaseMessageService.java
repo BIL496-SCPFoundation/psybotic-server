@@ -164,6 +164,7 @@ public class FirebaseMessageService {
                     "sent to the android device that the receiver using, if s/he is using one.");
         }
         firestore.collection("chats/psychologist/" + data.getChatRoomId()).document().set(data);
+        chatMessageService.insert(new ChatMessage(data));
         res.setStatus(HttpStatus.OK.value());
         res.setMessage("Message sent successfully");
         logger.info("Message sent to a real user");
