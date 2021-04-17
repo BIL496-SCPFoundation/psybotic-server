@@ -9,6 +9,8 @@ import java.util.List;
 public interface IUserService extends ICRUDService<User, String> {
     User login(User user);
 
+    List<User> findAll();
+
     List<EmergencyContact> findEmergencyContacts(String userId);
 
     List<FamilyMemberUser> findFamilyMembers(String userId);

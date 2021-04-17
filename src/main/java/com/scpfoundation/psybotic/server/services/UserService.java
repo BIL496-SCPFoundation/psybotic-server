@@ -48,6 +48,11 @@ public class UserService extends CRUDService<UserRepository, User> implements IU
         }
     }
 
+    @Override
+    public List<User> findAll() {
+        return userRepository.findAll();
+    }
+
     private void updateAfterLogin(User user, User tmp) {
         if (user.getDeviceToken() != null && !user.getDeviceToken().equals("")) {
             tmp.setDeviceToken(user.getDeviceToken());
