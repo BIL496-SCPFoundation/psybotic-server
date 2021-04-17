@@ -6,6 +6,8 @@ import com.scpfoundation.psybotic.server.serviceInterfaces.IChatMessageService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/chatMessages")
 @CrossOrigin("*")
@@ -41,4 +43,10 @@ public class ChatMessageController {
     public ResponseEntity<GeneralResponse> delete(@RequestBody ChatMessage chatMessage) {
         return chatMessageService.delete(chatMessage);
     }
+    @GetMapping("/findByReceiverId")
+    public List<ChatMessage> findByReceiverId(@RequestParam("receiverId") String receiverId) {
+        return chatMessageService.findByRecaiverId(receiverId);
+    }
+
+
 }
