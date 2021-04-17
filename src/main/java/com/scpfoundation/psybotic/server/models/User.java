@@ -23,6 +23,8 @@ public class User implements BasicModel<String>{
     private double mentalState;
     private boolean admin = false;
 
+    private boolean isPsychologist=false;
+
     public boolean isAdmin() {
         return this.admin;
     }
@@ -126,6 +128,16 @@ public class User implements BasicModel<String>{
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+
+    public boolean isPsychologist() {
+        return isPsychologist;
+    }
+
+    public void setPsychologist(boolean psychologist) {
+        isPsychologist = psychologist;
+    }
+
 
     @Override
     public boolean equals(Object o) {
