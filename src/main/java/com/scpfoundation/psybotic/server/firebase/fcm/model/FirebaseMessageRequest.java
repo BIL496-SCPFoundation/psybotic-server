@@ -7,13 +7,13 @@ public class FirebaseMessageRequest {
     private String topic;
     private String token;
     private Integer userId;
-    private com.scpfoundation.psybotic.server.firebase.fcm.model.MessageData data;
+    private MessageData data;
 
-    public com.scpfoundation.psybotic.server.firebase.fcm.model.MessageData getData() {
+    public MessageData getData() {
         return data;
     }
 
-    public void setData(com.scpfoundation.psybotic.server.firebase.fcm.model.MessageData data) {
+    public void setData(MessageData data) {
         this.data = data;
     }
 

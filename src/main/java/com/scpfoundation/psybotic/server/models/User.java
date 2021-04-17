@@ -20,6 +20,24 @@ public class User implements BasicModel<String>{
     private String imageUrl;
     private String deviceToken;
     private Double[] location;
+    private double mentalState;
+    private boolean admin = false;
+
+    public boolean isAdmin() {
+        return this.admin;
+    }
+
+    public void setAdmin(boolean admin) {
+        this.admin = admin;
+    }
+
+    public double getMentalState() {
+        return mentalState;
+    }
+
+    public void setMentalState(double mentalState) {
+        this.mentalState = mentalState;
+    }
 
     public Double[] getLocation() {
         return location;

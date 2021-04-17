@@ -4,6 +4,7 @@ import com.scpfoundation.psybotic.server.custom.GeneralResponse;
 import com.scpfoundation.psybotic.server.models.BasicModel;
 import com.scpfoundation.psybotic.server.models.EmergencyContact;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
