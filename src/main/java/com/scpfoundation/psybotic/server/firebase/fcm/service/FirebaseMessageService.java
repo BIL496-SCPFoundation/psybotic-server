@@ -165,45 +165,12 @@ public class FirebaseMessageService {
         }
         firestore.collection("chats/psychologist/" + data.getChatRoomId()).document().set(data);
         chatMessageService.insert(new ChatMessage(data));
+        request.setData(data);
         sendPushNotificationToToken(request);
         res.setStatus(HttpStatus.OK.value());
         res.setMessage("Message sent successfully");
         logger.info("Message sent to a real user");
     }
 
-    private String getDocumentId(MessageData data) {
-        Object key;
-        Class clzz = data.getClass();
-        do {
-            key = getKeyFromFields(clzz, data);
-            clzz = clzz.getSuperclass();
-        } while (key == null && clzz != null);
-
-        if (key == null) {
-            return UUID.randomUUID().toString();
-        }
-        return String.valueOf(key);
-
-    }
-
-    private Object getKeyFromFields(Class<?> clazz, Object t) {
-
-        return Arrays.stream(clazz.getDeclaredFields())
-                .filter(field -> field.isAnnotationPresent(DocumentId.class))
-                .findFirst()
-                .map(field -> getValue(t, field))
-                .orElse(null);
-    }
-
-    @Nullable
-    private Object getValue(Object t, java.lang.reflect.Field field) {
-        field.setAccessible(true);
-        try {
-            return field.get(t);
-        } catch (IllegalAccessException e) {
-            logger.error("Error in getting documentId key", e);
-        }
-        return null;
-    }
 
 }
