@@ -11,4 +11,6 @@ public interface IChatMessageService extends ICRUDService<ChatMessage, String>{
     List<ChatMessage> findByReceiverId(String id);
 
     List<ChatRoomResponse> getChatRooms(String userId);
+
+    List<ChatMessage> getChatHistory(String chatRoomId);
 }

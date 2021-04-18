@@ -56,4 +56,9 @@ public class ChatMessageService
         }
         return res;
     }
+
+    @Override
+    public List<ChatMessage> getChatHistory(String chatRoomId) {
+        return chatMessageRepository.findByChatRoomIdOrderByDateDesc(chatRoomId);
+    }
 }

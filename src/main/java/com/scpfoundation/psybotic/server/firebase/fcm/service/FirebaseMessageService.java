@@ -98,7 +98,7 @@ public class FirebaseMessageService {
                 if (receiverIsChatbot) {
                     sendMessageToChatbot(request, res, data, sender);
                 } else {
-                    sendMessageToUser(request, res, data, receiver);
+                    sendMessageToUser(request, res, data, receiver, sender);
                 }
             }
         } catch (Exception e) {
@@ -154,8 +154,8 @@ public class FirebaseMessageService {
     }
 
     private void sendMessageToUser(FirebaseMessageRequest request, GeneralResponse res, MessageData data,
-                                   User receiver) throws InterruptedException, ExecutionException {
-        request.setTitle(receiver.getFirstName());
+                                   User receiver, User sender) throws InterruptedException, ExecutionException {
+        request.setTitle(sender.getFirstName());
         request.setMessage(data.getMessage());
         if (receiver.getDeviceToken() != null) {
             request.setToken(receiver.getDeviceToken());
@@ -165,6 +165,7 @@ public class FirebaseMessageService {
         }
         firestore.collection("chats/psychologist/" + data.getChatRoomId()).document().set(data);
         chatMessageService.insert(new ChatMessage(data));
+        sendPushNotificationToToken(request);
         res.setStatus(HttpStatus.OK.value());
         res.setMessage("Message sent successfully");
         logger.info("Message sent to a real user");

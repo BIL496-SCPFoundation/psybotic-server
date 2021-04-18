@@ -54,4 +54,9 @@ public class ChatMessageController {
     public List<ChatRoomResponse> findChatRooms(@RequestParam("userId") String userId) {
         return chatMessageService.getChatRooms(userId);
     }
+
+    @GetMapping("/history")
+    public List<ChatMessage> history(@RequestParam("chatRoomId") String chatRoomId) {
+        return chatMessageService.getChatHistory(chatRoomId);
+    }
 }
