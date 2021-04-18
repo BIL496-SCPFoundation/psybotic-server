@@ -46,7 +46,12 @@ public class FCMService {
 
     public void sendMessageToToken(FirebaseMessageRequest request)
             throws InterruptedException, ExecutionException {
-        Message message = getPreconfiguredMessageToToken(request);
+        Message message;
+        if (request.getData() != null) {
+            message = getPreconfiguredMessageWithData(request.getData(), request);
+        } else {
+            message = getPreconfiguredMessageToToken(request);
+        }
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         String jsonOutput = gson.toJson(message);
         String response = sendAndGetResponse(message);
