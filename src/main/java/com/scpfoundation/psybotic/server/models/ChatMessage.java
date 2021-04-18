@@ -3,8 +3,6 @@ package com.scpfoundation.psybotic.server.models;
 import com.scpfoundation.psybotic.server.firebase.fcm.model.MessageData;
 import org.springframework.data.annotation.Id;
 
-import java.sql.Time;
-import java.sql.Timestamp;
 import java.util.Date;
 import java.util.Objects;
 
