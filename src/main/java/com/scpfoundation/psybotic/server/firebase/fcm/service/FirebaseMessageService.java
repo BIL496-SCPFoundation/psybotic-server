@@ -130,13 +130,13 @@ public class FirebaseMessageService {
         firestore.collection("chats/chatbot/" + data.getChatRoomId()).document().set(data);
         MessageData resMessage = new MessageData();
         sendResponseMessage(res, data, resMessage);
-        if (sender.getDeviceToken() != null) {
-            //send response message to the user's device
-            request.setData(resMessage);
-            request.setToken(sender.getDeviceToken());
-            request.setTitle("Psybotic");
-            sendPushNotificationToToken(request);
-        }
+//        if (sender.getDeviceToken() != null) {
+//            //send response message to the user's device
+//            request.setData(resMessage);
+//            request.setToken(sender.getDeviceToken());
+//            request.setTitle("Psybotic");
+//            sendPushNotificationToToken(request);
+//        }
         chatMessageService.insert(new ChatMessage(data));
         chatMessageService.insert(new ChatMessage(resMessage));
         res.setStatus(HttpStatus.OK.value());
