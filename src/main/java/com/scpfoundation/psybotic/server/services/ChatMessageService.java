@@ -59,6 +59,6 @@ public class ChatMessageService
 
     @Override
     public List<ChatMessage> getChatHistory(String chatRoomId) {
-        return chatMessageRepository.findByChatRoomIdOrderByDateDesc(chatRoomId);
+        return chatMessageRepository.findByChatRoomIdOrderByDateAsc(chatRoomId);
     }
 }
